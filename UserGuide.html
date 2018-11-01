@@ -26,15 +26,17 @@
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.12. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#keeping-track-of-payments-code-paid-code">3.13. Keeping track of payments : <code>paid</code></a></li>
-<li><a href="#display-tutor-earnings-for-the-month-code-earnings-code">3.14. Display tutor earnings for the month : <code>earnings</code></a></li>
-<li><a href="#mark-a-syllabus-topic-as-complete-incomplete-code-mark-code">3.15. Mark a syllabus topic as complete/incomplete : <code>mark</code></a></li>
-<li><a href="#add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code">3.16. Add a syllabus topic to the student’s list of syllabus topics : <code>appendsyll</code></a></li>
-<li><a href="#remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code">3.17. Remove a syllabus topic from the student’s list of syllabus topics : <code>erasesyll</code></a></li>
-<li><a href="#copy-a-subject-from-a-student-to-other-student-s-code-copysub-code">3.18. Copy a subject from a student to other student(s) : <code>copysub</code></a></li>
-<li><a href="#add-a-subject-to-a-student-code-addsub-code">3.19. Add a subject to a student : <code>addsub</code></a></li>
-<li><a href="#delete-a-subject-from-a-student-code-deletesub-code">3.20. Delete a subject from a student : <code>deletesub</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.21. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.22. Saving the data</a></li>
+<li><a href="#editing-payment-entries-code-paid-code">3.14. Editing payment entries : <code>paid</code></a></li>
+<li><a href="#display-tutor-earnings-for-the-month-code-earnings-code">3.15. Display tutor earnings for the month : <code>earnings</code></a></li>
+<li><a href="#mark-a-syllabus-topic-as-complete-incomplete-code-mark-code">3.16. Mark a syllabus topic as complete/incomplete : <code>mark</code></a></li>
+<li><a href="#add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code">3.17. Add a syllabus topic to the student’s list of syllabus topics : <code>appendsyll</code></a></li>
+<li><a href="#remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code">3.18. Remove a syllabus topic from the student’s list of syllabus topics : <code>erasesyll</code></a></li>
+<li><a href="#edit-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-editsyll-code">3.19. Edit a syllabus topic from the student’s list of syllabus topics : <code>editsyll</code></a></li>
+<li><a href="#copy-a-subject-from-a-student-to-other-student-s-code-copysub-code">3.20. Copy a subject from a student to other student(s) : <code>copysub</code></a></li>
+<li><a href="#add-a-subject-to-a-student-code-addsub-code">3.21. Add a subject to a student : <code>addsub</code></a></li>
+<li><a href="#delete-a-subject-from-a-student-code-deletesub-code">3.22. Delete a subject from a student : <code>deletesub</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.24. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -526,7 +528,42 @@ Format: <code>paid STUDENT_INDEX AMOUNT MONTH YEAR</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-tutor-earnings-for-the-month-code-earnings-code"><a class="link" href="#display-tutor-earnings-for-the-month-code-earnings-code">3.14. Display tutor earnings for the month : <code>earnings</code></a></h3>
+<h3 id="editing-payment-entries-code-paid-code"><a class="link" href="#editing-payment-entries-code-paid-code">3.14. Editing payment entries : <code>paid</code></a></h3>
+<div class="paragraph">
+<p>Edits a payment of a specified amount made by a specified student for a specified month and year.<br>
+Format: <code>paid STUDENT_INDEX AMOUNT MONTH YEAR</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits a payment at the specified <code>STUDENT_INDEX</code>, for a specified <code>MONTH</code> and <code>YEAR</code> by increasing it by the specified <code>AMOUNT</code>.</p>
+</li>
+<li>
+<p>The student index refers to the index number shown in the displayed student list.</p>
+</li>
+<li>
+<p>The student index, month and year <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>paid 1 200 01 2018</code><br>
+`Adds $200 payment made on January 2018 if payment entry already exists</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-tutor-earnings-for-the-month-code-earnings-code"><a class="link" href="#display-tutor-earnings-for-the-month-code-earnings-code">3.15. Display tutor earnings for the month : <code>earnings</code></a></h3>
 <div class="paragraph">
 <p>Display tutor earnings for the specified month of a specified year.<br>
 Format: <code>earnings MONTH YEAR</code></p>
@@ -558,7 +595,7 @@ Format: <code>earnings MONTH YEAR</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-a-syllabus-topic-as-complete-incomplete-code-mark-code"><a class="link" href="#mark-a-syllabus-topic-as-complete-incomplete-code-mark-code">3.15. Mark a syllabus topic as complete/incomplete : <code>mark</code></a></h3>
+<h3 id="mark-a-syllabus-topic-as-complete-incomplete-code-mark-code"><a class="link" href="#mark-a-syllabus-topic-as-complete-incomplete-code-mark-code">3.16. Mark a syllabus topic as complete/incomplete : <code>mark</code></a></h3>
 <div class="paragraph">
 <p>Toggle the state of a specified syllabus topic for a specified student and subject.<br>
 Format: <code>mark STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX</code></p>
@@ -601,7 +638,7 @@ Format: <code>mark STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code"><a class="link" href="#add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code">3.16. Add a syllabus topic to the student’s list of syllabus topics : <code>appendsyll</code></a></h3>
+<h3 id="add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code"><a class="link" href="#add-a-syllabus-topic-to-the-student-s-list-of-syllabus-topics-code-appendsyll-code">3.17. Add a syllabus topic to the student’s list of syllabus topics : <code>appendsyll</code></a></h3>
 <div class="paragraph">
 <p>Add a new syllabus topic for a specified student and subject.<br>
 Format: <code>appendsyll STUDENT_INDEX SUBJECT_INDEX sy/SYLLABUS</code></p>
@@ -655,7 +692,7 @@ Format: <code>appendsyll STUDENT_INDEX SUBJECT_INDEX sy/SYLLABUS</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code"><a class="link" href="#remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code">3.17. Remove a syllabus topic from the student’s list of syllabus topics : <code>erasesyll</code></a></h3>
+<h3 id="remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code"><a class="link" href="#remove-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-erasesyll-code">3.18. Remove a syllabus topic from the student’s list of syllabus topics : <code>erasesyll</code></a></h3>
 <div class="paragraph">
 <p>Remove a syllabus topic for a specified student and subject.<br>
 Format: <code>erasesyll STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX</code></p>
@@ -698,7 +735,50 @@ Format: <code>erasesyll STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="copy-a-subject-from-a-student-to-other-student-s-code-copysub-code"><a class="link" href="#copy-a-subject-from-a-student-to-other-student-s-code-copysub-code">3.18. Copy a subject from a student to other student(s) : <code>copysub</code></a></h3>
+<h3 id="edit-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-editsyll-code"><a class="link" href="#edit-a-syllabus-topic-from-the-student-s-list-of-syllabus-topics-code-editsyll-code">3.19. Edit a syllabus topic from the student’s list of syllabus topics : <code>editsyll</code></a></h3>
+<div class="paragraph">
+<p>Edit a syllabus topic for a specified student and subject.<br>
+Format: <code>editsyll STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX sy/SYLLABUS</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits a syllabus topic at the specified <code>SYLLABUS_INDEX</code> for a subject at the specified <code>SUBJECT_INDEX</code> for a student at the specified <code>STUDENT_INDEX</code>.</p>
+</li>
+<li>
+<p>The student index refers to the index number shown in the displayed student list.</p>
+</li>
+<li>
+<p>The subject index refers to the index number shown in the student&#8217;s subject list.</p>
+</li>
+<li>
+<p>The syllabus index refers to the index number shown in the student&#8217;s list of syllabus topics for a subject.</p>
+</li>
+<li>
+<p>The student index, subject index and syllabus index <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editsyll 1 1 2 sy/Integration</code></p>
+</li>
+<li>
+<p><code>editsyll 3 1 1 sy/Kinetic Energy</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copy-a-subject-from-a-student-to-other-student-s-code-copysub-code"><a class="link" href="#copy-a-subject-from-a-student-to-other-student-s-code-copysub-code">3.20. Copy a subject from a student to other student(s) : <code>copysub</code></a></h3>
 <div class="paragraph">
 <p>Duplicate a subject from chosen student and add it to the target student. Duplicate syllabus will not be added.<br>
 Format: <code>copysub SOURCE_STUDENT_INDEX SUBJECT_INDEX TARGET_STUDENT_INDEX</code></p>
@@ -735,7 +815,7 @@ Format: <code>copysub SOURCE_STUDENT_INDEX SUBJECT_INDEX TARGET_STUDENT_INDEX</c
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-a-subject-to-a-student-code-addsub-code"><a class="link" href="#add-a-subject-to-a-student-code-addsub-code">3.19. Add a subject to a student : <code>addsub</code></a></h3>
+<h3 id="add-a-subject-to-a-student-code-addsub-code"><a class="link" href="#add-a-subject-to-a-student-code-addsub-code">3.21. Add a subject to a student : <code>addsub</code></a></h3>
 <div class="paragraph">
 <p>Add a new subject to a specified student.<br>
 Format: <code>addsub STUDENT_INDEX s/SUBJECT</code></p>
@@ -786,7 +866,7 @@ Format: <code>addsub STUDENT_INDEX s/SUBJECT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-a-subject-from-a-student-code-deletesub-code"><a class="link" href="#delete-a-subject-from-a-student-code-deletesub-code">3.20. Delete a subject from a student : <code>deletesub</code></a></h3>
+<h3 id="delete-a-subject-from-a-student-code-deletesub-code"><a class="link" href="#delete-a-subject-from-a-student-code-deletesub-code">3.22. Delete a subject from a student : <code>deletesub</code></a></h3>
 <div class="paragraph">
 <p>Deletes a subject from a specified student.<br>
 Format: <code>deletesub STUDENT_INDEX SUBJECT_INDEX</code></p>
@@ -841,14 +921,14 @@ A student must have at least one subject.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.21. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.22. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.24. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -942,4 +1022,4 @@ e.g <code>copysub 1 1 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 04:34:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 11:14:14 UTC</div></div></div></body></html>
