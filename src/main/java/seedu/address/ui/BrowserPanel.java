@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.model.person.Payment;
@@ -68,23 +69,29 @@ public class BrowserPanel extends UiPart<Region> {
         if (person != null) {
             // Fill the labels with info from the person object.
             nameLabel.setText(person.getName().fullName);
+            nameLabel.setTextFill(Color.web("#0a9241"));
 
             tuitionTimingLabel.setText(person.getTuitionTiming().value);
+            tuitionTimingLabel.setTextFill(Color.web("#0a9241"));
 
             addressLabel.setText(person.getAddress().value);
+            addressLabel.setTextFill(Color.web("#0a9241"));
 
             emailLabel.setText(person.getEmail().value);
+            emailLabel.setTextFill(Color.web("#0a9241"));
 
             phoneLabel.setText(person.getPhone().value);
+            phoneLabel.setTextFill(Color.web("#0a9241"));
 
             final StringBuilder paymentsBuilder = new StringBuilder();
             List<Payment> payments = new ArrayList<>(person.getPayments());
             for (int i = 0; i < payments.size(); i++) {
                 Payment selected = payments.get(i);
-                paymentsBuilder.append(String.format("Month: %5d     Year: %10d     Amount: %10d         \n",
+                paymentsBuilder.append(String.format("Month:%5d    Year:%5d    Amount:%5d\n",
                         selected.getMonth(), selected.getYear(), selected.getAmount()));
             }
             paymentsLabel.setText(paymentsBuilder.toString());
+            paymentsLabel.setTextFill(Color.web("#0a9241"));
 
             final StringBuilder subjectsBuilder = new StringBuilder();
             List<Subject> subjects = new ArrayList<>(person.getSubjects());
@@ -93,6 +100,8 @@ public class BrowserPanel extends UiPart<Region> {
                 subjectsBuilder.append(subject.substring(2, subject.length() - 1) + "\n\n");
             }
             subjectsLabel.setText(subjectsBuilder.toString().trim());
+            subjectsLabel.setTextFill(Color.web("#0a9241"));
+
         } else {
             // Person is null, remove all the text.
             nameLabel.setText("");
