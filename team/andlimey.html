@@ -407,4 +407,227 @@ Only 12-hr timings are valid.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:50:01 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As a busy tutor, I want to be able to manage my students' schedules individually, so that I can plan my time properly.</p>
+</li>
+<li>
+<p>As a tutor, I want to be able to find out where my students live and what time I should be there for tuition.</p>
+</li>
+<li>
+<p>As a tutor, I want to know my students' individual progress so that I know what topics I need to cover for the next tuition session.</p>
+</li>
+<li>
+<p>As a tutor, I want to keep track of my students' payments.</p>
+</li>
+<li>
+<p>As a tutor, I want to be able to edit teaching data such as editing my syllabus to keep up with changes in school&#8217;s curriculum or updating payments made by students.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs to add a student and his/her details.
+  2. System adds student details into the database.
+  Use case ends.
+Extensions:
+  2a. Tutor did not key in all mandatory fields.
+    2a1. System displays error message informing tutor of invalid index.
+    2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs to edit a student's details.
+  2. System edits student details into the database.
+  Use case ends.
+Extensions:
+  2a. Index is out of bounds
+    2a1. System displays error message informing tutor of invalid index.
+    2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs student's index to delete.
+  2. System deletes student details from the database.
+  Use case ends.
+Extensions:
+  2a. Index is out of bounds
+   2a1. System displays error message informing tutor of invalid index.
+   2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>List Students</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor requests to list students.
+  2. System displays current list of students.
+  Use case ends.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Group Students</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Current list of students is not empty.
+MSS:
+  1. Tutor requests to group students by day or timing.
+  2. System filters the current list of students based on the timing entered.
+  3. System sorts the filtered list of students in order of timing.
+  4. System displays filtered and sorted list to Tutor.
+  Use case ends.
+Extensions:
+  2a. Input is invalid
+    2a1. System displays examples of valid input to Tutor.
+    Use case ends.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Record students' payments</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: student index entered must be valid.
+MSS:
+  1. Tutor request to add in payment for a student.
+  2. System searches for that student according to index entered.
+  3. System adds Payment amount, month and year to student's record.
+  4. System displays payment record in browser panel.
+  5. System displays successful recording of payment under command box.
+  Use case ends.
+ Extensions:
+  2a. Tutor does not enter all the required entries correctly
+    2a1. System displays error message
+    2a2. System gives tutor an example of a correct entry.
+    2a3. Repeat step 1
+  2b. Tutor does not enter a valid student index
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit students' payments</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: student index entered must be valid
+MSS:
+  1. Tutor request to add in edited payment for a student.
+  2. System finds the existing payment entry with same month and year.
+  3. System adds new payment entry to existing entry.
+  4. System displays payment record in browser panel.
+  5. System displays successful recording of payment under command box.
+  Use case ends.
+ Extensions:
+  2a. Tutor does not enter all the required entries correctly
+    2a1. System displays error message
+    2a2. System gives tutor an example of a correct entry.
+    2a3. Repeat step 1
+  2b. Tutor does not enter a valid student index
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Display tutor&#8217;s earnings for that month and year</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Tutor has recorded payment for students before.
+MSS:
+  1. Tutor request for earnings for a specific month and year.
+  2. System searches for all the payment records made from all the students for that particular month and year.
+  3. System adds up all the payment.
+  4. System displays total earnings under the command box.
+  Use case end.
+ Extensions:
+  2a. System does not find any payment recorded for that month and year.
+    2a1. System displays $0 as result.
+  2b. Tutor does not enter all the required entries correctly
+    2b1. System displays error message
+    2b2. System gives tutor an example of a correct entry.
+    2b3. Repeat step 1
+  2c. Tutor does not enter a valid entry
+    2c1. System displays error message telling tutor that entry is invalid
+    2c2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit students' syllabus for that subject</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Tutor has an existing syllabus entry at the index.
+MSS:
+  1. Tutor request to edit syllabus for a specific student, subject and syllabus
+  2. System searches for the student and the respective subject and syllabus at specified index.
+  3. System edits the syllabus at the specified index with new syllabus
+  4. System displays edited syllabus list in browser panel
+  5. System displays successful editing of syllabus under command box.
+  Use case end.
+ Extensions:
+  2a. System does not find any student entry at specified index.
+    2a1. System displays error message telling tutor that index is invalid
+    2a2. Repeat step 1.
+  2b. System does not find any subject entry at specified index.
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.
+  2c. System does not find any syllabus entry at specified index.
+    2c1. System displays error message telling tutor that index is invalid.
+    2c2. Repeat step 1.
+  2d. System find same syllabus entry already exists in subject.
+    2d1. System displays error message telling tutor that syllabus already exist.
+    2d2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:58:52 UTC</div></div></div></body></html>

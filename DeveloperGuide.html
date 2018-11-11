@@ -82,18 +82,12 @@
 <li><a href="#editing-payment-for-a-student">F.6. Editing Payment for a student</a></li>
 <li><a href="#viewing-earnings-command">F.7. Viewing earnings command</a></li>
 <li><a href="#add-subject-command">F.8. Add subject command</a></li>
-</ul>
-</li>
-<li><a href="#delete-subject-command">7. Delete subject command</a>
-<ul class="sectlevel2">
-<li><a href="#copy-subject-command">7.1. Copy subject command</a></li>
-</ul>
-</li>
-<li><a href="#add-syllabus-command">8. Add syllabus command</a></li>
-<li><a href="#delete-syllabus-command">9. Delete syllabus command</a></li>
-<li><a href="#edit-syllabus-command">10. Edit syllabus command</a>
-<ul class="sectlevel2">
-<li><a href="#mark-command">10.1. Mark command</a></li>
+<li><a href="#delete-subject-command">F.9. Delete subject command</a></li>
+<li><a href="#copy-subject-command">F.10. Copy subject command</a></li>
+<li><a href="#add-syllabus-command">F.11. Add syllabus command</a></li>
+<li><a href="#delete-syllabus-command">F.12. Delete syllabus command</a></li>
+<li><a href="#edit-syllabus-command">F.13. Edit syllabus command</a></li>
+<li><a href="#mark-command">F.14. Mark command</a></li>
 </ul>
 </li>
 </ul>
@@ -1301,14 +1295,6 @@ Setting this will add a "View on GitHub" link in the navigation bar.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-seedu</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Define this attribute if the project is an official SE-EDU project.
-This will render the SE-EDU navigation bar at the top of the page, and add some SE-EDU-specific navigation items.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1352,10 +1338,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Site section that the document belongs to.
 This will cause the associated item in the navigation bar to be highlighted.
-One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutcomes</code>*, <code>AboutUs</code>, <code>ContactUs</code></p>
-</div>
-<div class="paragraph">
-<p><em>* Official SE-EDU projects only</em></p>
+One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>AboutUs</code>, <code>ContactUs</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 </tr>
@@ -1388,8 +1371,7 @@ These template files are written in a mixture of <a href="https://www.ruby-lang.
 <td class="content">
 <div class="paragraph">
 <p>Modifying the template files in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
-You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
-The SE-EDU team does not provide support for modified template files.</p>
+You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.</p>
 </div>
 </td>
 </tr>
@@ -1591,10 +1573,10 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="ulist">
 <ul>
 <li>
-<p><code>Tutors use reminder applications to keep track of lessons</code></p>
+<p><code>Tutors use reminder applications to keep track of lessons.</code></p>
 </li>
 <li>
-<p><code>Tutors use physical diaries or notepads to keep track of current lesson progress</code></p>
+<p><code>Tutors use physical diaries or notepads to keep track of current lesson progress.</code></p>
 </li>
 </ul>
 </div>
@@ -1604,7 +1586,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="ulist">
 <ul>
 <li>
-<p><code>Tutors have a platform where they can keep track of all their students' details, their progress and the syllabus they intend to cover.</code></p>
+<p><code>Tutors have a platform where they can keep track of all their students' details, their progress across different subjects and the syllabus topics they intend to cover.</code></p>
 </li>
 </ul>
 </div>
@@ -1803,29 +1785,30 @@ MSS:
 <p>Edit students' syllabus for that subject</p>
 <div class="literalblock">
 <div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Tutor has an existing syllabus entry at the index.
-MSS:
-  1. Tutor request to edit syllabus for a specific student, subject and syllabus
-  2. System searches for the student and the respective subject and syllabus at specified index.
-  3. System edits the syllabus at the specified index with new syllabus
-  4. System displays edited syllabus list in browser panel
-  5. System displays successful editing of syllabus under command box.
-  Use case end.
- Extensions:
-  2a. System does not find any student entry at specified index.
-    2a1. System displays error message telling tutor that index is invalid
-    2a2. Repeat step 1.
-  2b. System does not find any subject entry at specified index.
-    2b1. System displays error message telling tutor that index is invalid
-    2b2. Repeat step 1.
-  2c. System does not find any syllabus entry at specified index.
-    2c1. System displays error message telling tutor that index is invalid.
-    2c2. Repeat step 1.
-  2d. System find same syllabus entry already exists in subject.
-    2d1. System displays error message telling tutor that syllabus already exist.
-    2d2. Repeat step 1.</pre>
+<pre>    System: TutorHelper
+    Actor: Tutor
+    Precondition: Tutor has an existing syllabus entry at the index.
+    MSS:
+      1. Tutor request to edit syllabus for a specific student, subject and syllabus
+      2. System searches for the student and the respective subject and syllabus at specified index.
+      3. System edits the syllabus at the specified index with new syllabus
+      4. System displays edited syllabus list in browser panel
+      5. System displays successful editing of syllabus under command box.
+      Use case end.
+     Extensions:
+      2a. System does not find any student entry at specified index.
+        2a1. System displays error message telling tutor that index is invalid
+        2a2. Repeat step 1.
+      2b. System does not find any subject entry at specified index.
+        2b1. System displays error message telling tutor that index is invalid
+        2b2. Repeat step 1.
+      2c. System does not find any syllabus entry at specified index.
+        2c1. System displays error message telling tutor that index is invalid.
+        2c2. Repeat step 1.
+      2d. System find same syllabus entry already exists in subject.
+        2d1. System displays error message telling tutor that syllabus already exist.
+        2d2. Repeat step 1.
+// end::usecases[]</pre>
 </div>
 </div>
 </li>
@@ -1865,10 +1848,6 @@ MSS:
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
 </dd>
 <dt class="hdlist1"><a id="subject"></a> Subject</dt>
 <dd>
@@ -2172,11 +2151,8 @@ Expected: Invalid command format. addsub command message usage is shown.</p>
 </ol>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="delete-subject-command"><a class="link" href="#delete-subject-command">7. Delete subject command</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="delete-subject-command"><a class="link" href="#delete-subject-command">F.9. Delete subject command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2207,8 +2183,9 @@ Expected: Invalid command format. deletesub command message usage is shown.</p>
 </li>
 </ol>
 </div>
+</div>
 <div class="sect2">
-<h3 id="copy-subject-command"><a class="link" href="#copy-subject-command">7.1. Copy subject command</a></h3>
+<h3 id="copy-subject-command"><a class="link" href="#copy-subject-command">F.10. Copy subject command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2252,11 +2229,8 @@ Expected: Invalid command format. copysub command message usage is shown.</p>
 </ol>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="add-syllabus-command"><a class="link" href="#add-syllabus-command">8. Add syllabus command</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="add-syllabus-command"><a class="link" href="#add-syllabus-command">F.11. Add syllabus command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2292,10 +2266,8 @@ Expected: Invalid command format. addsyll command message usage is shown.</p>
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="delete-syllabus-command"><a class="link" href="#delete-syllabus-command">9. Delete syllabus command</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="delete-syllabus-command"><a class="link" href="#delete-syllabus-command">F.12. Delete syllabus command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2331,10 +2303,8 @@ Expected: Invalid command format. deletesyll command message usage is shown.</p>
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="edit-syllabus-command"><a class="link" href="#edit-syllabus-command">10. Edit syllabus command</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="edit-syllabus-command"><a class="link" href="#edit-syllabus-command">F.13. Edit syllabus command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2373,8 +2343,9 @@ Expected: Invalid command format. editsyll command message usage is shown.</p>
 </li>
 </ol>
 </div>
+</div>
 <div class="sect2">
-<h3 id="mark-command"><a class="link" href="#mark-command">10.1. Mark command</a></h3>
+<h3 id="mark-command"><a class="link" href="#mark-command">F.14. Mark command</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2411,4 +2382,4 @@ Expected: Invalid command format. marksyll command message usage is shown.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:50:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:58:52 UTC</div></div></div></body></html>
