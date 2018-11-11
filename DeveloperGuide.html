@@ -1,7 +1,1589 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>TutorHelper - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">TutorHelper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TutorHelper - Developer Guide</h1></div><div id="content"><div class="sect1">
-<h2 id="value-proposition"><a class="link" href="#value-proposition">1. Value Proposition</a></h2>
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">TutorHelper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TutorHelper - Developer Guide</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>By: <code>CS2103-AY1819S1-W13-4</code>      Since: <code>Aug 2018</code></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#setting-up">1. Setting up</a>
+<ul class="sectlevel2">
+<li><a href="#prerequisites">1.1. Prerequisites</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
+<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
+</ul>
+</li>
+<li><a href="#design">2. Design</a>
+<ul class="sectlevel2">
+<li><a href="#Design-Architecture">2.1. Architecture</a></li>
+<li><a href="#Design-Ui">2.2. UI component</a></li>
+<li><a href="#Design-Logic">2.3. Logic component</a></li>
+<li><a href="#Design-Model">2.4. Model component</a></li>
+<li><a href="#Design-Storage">2.5. Storage component</a></li>
+<li><a href="#Design-Commons">2.6. Common classes</a></li>
+</ul>
+</li>
+<li><a href="#implementation">3. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#group-students-feature">3.1. Group Students feature</a></li>
+<li><a href="#students-payment-feature">3.2. Students payment feature</a></li>
+<li><a href="#students-edit-payment-feature">3.3. Students edit payment feature</a></li>
+<li><a href="#tutor-s-earnings-feature">3.4. Tutor&#8217;s Earnings feature</a></li>
+<li><a href="#copy-subject-feature">3.5. Copy Subject feature</a></li>
+<li><a href="#add-delete-subject">3.6. Add / Delete Subject</a></li>
+<li><a href="#edit-syllabus">3.7. Edit Syllabus</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">4. Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
+<li><a href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></li>
+<li><a href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></li>
+<li><a href="#site-template">4.6. Site Template</a></li>
+</ul>
+</li>
+<li><a href="#Testing">5. Testing</a>
+<ul class="sectlevel2">
+<li><a href="#running-tests">5.1. Running Tests</a></li>
+<li><a href="#types-of-tests">5.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
+</ul>
+</li>
+<li><a href="#dev-ops">6. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">6.1. Build Automation</a></li>
+<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
+<li><a href="#making-a-release">6.5. Making a Release</a></li>
+<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#GetStartedProgramming">Appendix A: Product Scope</a></li>
+<li><a href="#user-stories">Appendix B: User Stories</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
+<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#grouping">F.4. Grouping</a></li>
+<li><a href="#making-payment-for-a-student">F.5. Making Payment for a student</a></li>
+<li><a href="#editing-payment-for-a-student">F.6. Editing Payment for a student</a></li>
+<li><a href="#viewing-earnings-command">F.7. Viewing earnings command</a></li>
+<li><a href="#add-subject-command">F.8. Add subject command</a></li>
+</ul>
+</li>
+<li><a href="#delete-subject-command">7. Delete subject command</a>
+<ul class="sectlevel2">
+<li><a href="#copy-subject-command">7.1. Copy subject command</a></li>
+</ul>
+</li>
+<li><a href="#add-syllabus-command">8. Add syllabus command</a></li>
+<li><a href="#delete-syllabus-command">9. Delete syllabus command</a></li>
+<li><a href="#edit-syllabus-command">10. Edit syllabus command</a>
+<ul class="sectlevel2">
+<li><a href="#mark-command">10.1. Mark command</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>9</code></strong> or later</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+JDK <code>10</code> on Windows will fail to run tests in <a href="UsingGradle.html#Running-Tests">headless mode</a> due to a <a href="https://github.com/javafxports/openjdk-jfx/issues/66">JavaFX bug</a>.
+Windows developers are highly recommended to use JDK <code>9</code>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code></p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
+</li>
+<li>
+<p>Click <code>Open as Project</code></p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings</p>
+</li>
+<li>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This will generate all resources required by the application and tests.</p>
+</li>
+<li>
+<p>Open <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/storage/XmlAdaptedStudent.java"><code>XmlAdaptedStudent.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Due to an ongoing <a href="https://youtrack.jetbrains.com/issue/IDEA-189060">issue</a> with some of the newer versions of IntelliJ, code errors may be detected even if the project can be built and run successfully</p>
+</li>
+<li>
+<p>To resolve this, place your cursor over any of the code section highlighted in red. Press <span class="keyseq"><kbd>ALT</kbd>+<kbd>ENTER</kbd></span>, and select <code>Add '--add-modules=&#8230;&#8203;' to module compiler options</code> for each error</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/seedu/address/commons/util/XmlUtilTest.java"><code>XmlUtilTest.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+</li>
+<li>
+<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
+<div class="paragraph">
+<p>After forking the repo, the documentation will still refer to the <code>CS2103-AY1819S1-W13-4/main</code> repo.</p>
+</div>
+<div class="paragraph">
+<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>CS2103-AY1819S1-W13-4/main</code>), you should do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
+</li>
+<li>
+<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.3. Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
+<div class="paragraph">
+<p>When you are ready to start coding,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
+</li>
+<li>
+<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Product Scope</em></a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/Architecture.png" alt="Architecture" width="600">
+</div>
+<div class="title">Figure 1. Architecture Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+</li>
+<li>
+<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design)</p>
+</li>
+<li>
+<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rest of the App consists of four components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
+</li>
+<li>
+<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
+</li>
+<li>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
+</li>
+<li>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of the four components</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
+</li>
+<li>
+<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+</div>
+<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+</div>
+<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
+<div class="paragraph">
+<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
+</div>
+<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note how the <code>Model</code> simply raises a <code>TutorHelperChangedEvent</code> when the TutorHelper data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
+</div>
+<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sections below give more details of each component.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
+</div>
+<div class="title">Figure 5. Structure of the UI Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+</li>
+<li>
+<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>TutorHelperParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a student) and/or raise events.</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+</li>
+<li>
+<p>stores the TutorHelper data.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;Student&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</code>, which <code>Student</code> can reference. This would allow <code>TutorHelper</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Student</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+<br>
+<span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>can save the TutorHelper data in xml format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<div class="paragraph">
+<p>Classes used by multiple components are in the <code>seedu.address.commons</code> package.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes some noteworthy details on how certain features are implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="group-students-feature"><a class="link" href="#group-students-feature">3.1. Group Students feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Classes related to Group and its functionality is listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a GroupCommandParser object and parses the user&#8217;s input.</p>
+</li>
+<li>
+<p><code>GroupCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, creates a predicate based on the input and returns a GroupCommand object with the predicate as the argument.</p>
+</li>
+<li>
+<p><code>GroupCommand</code>&#8201;&#8212;&#8201;Filters the list based on the predicate, sorts the list and displays it to the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the group mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Assuming that the application isn&#8217;t empty, the user executes 'group Monday' command to group all students with a class on Monday. The group command will be called by <code>GroupCommandParser.parse()</code>, parsing the argument to check against. The application will check the list and display all students with classes on Monday, sorted based on the earliest timing.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The user can execute <code>list</code> to re-display the full list of students again.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The user can execute <code>undo</code> to undo the sorting done to the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The group command is CASE-SENSITIVE. E.g. Passing <code>MONDAY</code> as an input instead of <code>Monday</code> will throw an error.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only 12-hr timings are valid.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the group operation works for day parameter and time parameter:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupSequenceDiagramDay.png" alt="GroupSequenceDiagramDay" width="650">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GroupSequenceDiagramTime.png" alt="GroupSequenceDiagramTime" width=""650">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="students-payment-feature"><a class="link" href="#students-payment-feature">3.2. Students payment feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The Payment mechanism is facilitated by VersionedTutorHelper and FilteredList&lt;Student&gt;. VersionedTutorHelper extends from TutorHelper and classes related to Payment calls methods from VersionedTutorHelper to retrieve students' data, update them and display accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Classes that are related to Payment and their functionality are as listed below:
+* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.
+* <code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the argument.
+* <code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.
+* <code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.
+Step 1. The tutor launches the application and wants to record a payment for his/her student called Alice.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. He/she makes a mental note of Alice&#8217;s student index as listed in the left side of the application.</p>
+</div>
+<div class="paragraph">
+<p>Step 2a. Lets say, Alice has student id 2. The payment she made was $400 for the month and year of November 2018. He/she proceeds to key in the command in the following format: paid 2 400 11 2018</p>
+</div>
+<div class="paragraph">
+<p>Step 2b. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.</p>
+</div>
+<div class="paragraph">
+<p>Step 2c. PayCommandParser then checks if the inputs are of the correct format and it initialises a Payment object with the inputs.</p>
+</div>
+<div class="paragraph">
+<p>Step 2d. The PayCommandParser method then returns a PayCommand object with payment object.</p>
+</div>
+<div class="paragraph">
+<p>Step 2e. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.</p>
+</div>
+<div class="paragraph">
+<p>Step 2f. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Student class.</p>
+</div>
+<div class="paragraph">
+<p>Step 2g. Alice student class contains payment class. The PayCommand execute method proceeds to call the method updatePayments, then calls updateStudent in model class to modify Alice Student class with the new updated payment.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Payment list will keep up to 5 payments at any one time. When the 6th payment is added, the payment list will remove the oldest payment record.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The maximum amount of payment that can be made each time is $10 000.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The diagram below illustrates the sequence diagram.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/PaymentSequenceDiagram.png" alt="PaymentSequenceDiagram" width="800"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="students-edit-payment-feature"><a class="link" href="#students-edit-payment-feature">3.3. Students edit payment feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The Edit Payment mechanism is facilitated by VersionedTutorHelper and FilteredList&lt;Student&gt;. VersionedTutorHelper extends from TutorHelper and classes related to Payment calls methods from VersionedTutorHelper to retrieve students' data, update them and display accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Classes that are related to Payment and their functionality are as listed below:
+* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.
+* <code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the argument.
+* <code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.
+* <code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.
+Step 1. The tutor launches the application and wants to record a payment for his/her student called Alice.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. He/she makes a mental note of Alice&#8217;s student index as listed in the left side of the application.</p>
+</div>
+<div class="paragraph">
+<p>Step 2a. Lets say, Alice has student id 2. The payment she made was $400 for the month and year of November 2018. He/she proceeds to key in the command in the following format: paid 2 400 11 2018</p>
+</div>
+<div class="paragraph">
+<p>Step 2b. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.</p>
+</div>
+<div class="paragraph">
+<p>Step 2c. PayCommandParser then checks if the inputs are of the correct format and it initialises a Payment object with the inputs.</p>
+</div>
+<div class="paragraph">
+<p>Step 2d. The PayCommandParser method then returns a PayCommand object with payment object.</p>
+</div>
+<div class="paragraph">
+<p>Step 2e. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.</p>
+</div>
+<div class="paragraph">
+<p>Step 2f. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Student class.</p>
+</div>
+<div class="paragraph">
+<p>Step 2g. Alice student class contains payment class. The PayCommand execute method proceeds to call the method updatePayments, then calls updateStudent in model class to modify Alice Student class with the new updated payment.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Payment list will keep up to 5 payments at any one time. When the 6th payment is added, the payment list will remove the oldest payment record.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The maximum amount of payment that can be made each time is $10 000.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The diagram below illustrates the sequence diagram.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/EditPaymentSequenceDiagram.png" alt="EditPaymentSequenceDiagram" width="800"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tutor-s-earnings-feature"><a class="link" href="#tutor-s-earnings-feature">3.4. Tutor&#8217;s Earnings feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The Earnings mechanism is mainly facilitated by the filteredStudentList found in model. It works by checking through all past recorded payments for that specific month and year as requested by the tutor and returns the total earnings.
+The classes related to Earnings are EarningsCommand, EarningsCommandParser.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.</p>
+</li>
+<li>
+<p><code>EarningsCommandParser</code> --Takes in users' input and checks if it adheres to the required format. Returns a EarningsCommand with the month and year passed in.</p>
+</li>
+<li>
+<p><code>EarningsCommand</code>&#8201;&#8212;&#8201;Takes in month and year as inputs in its constructed. In Execute() method, it performs the checking of all recorded payments and returns the total payments received for that specified month and year.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the earning mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The tutor launches the application and wants to view his/her earnings for the month of November 2018.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. He/she enters input in the format of: earnings 11 2018</p>
+</div>
+<div class="paragraph">
+<p>Step 2a. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, earnings) and creates the EarningsCommandParser object, followed by calling parse method, with the arguments passed in.</p>
+</div>
+<div class="paragraph">
+<p>Step 2b. EarningCommandParser checks if the inputs are of the correct format.</p>
+</div>
+<div class="paragraph">
+<p>Step 2b. The PayCommandParser method then returns a EarningCommand object with month and year passed in.</p>
+</div>
+<div class="paragraph">
+<p>Step 2c. This is propagated back to the LogicManager class which then proceed to call execute method in the returned EarningsCommand object.</p>
+</div>
+<div class="paragraph">
+<p>Step 2d. The execute method in EarningsCommand proceed to obtain the list of students from the model and proceeds to search for Payment records made for that requested month and year.</p>
+</div>
+<div class="paragraph">
+<p>Step 2e. The amount is then returned.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The tutor will then see a message below the command text box, showing the earnings for the requested month and year.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below illustrates the sequence diagram.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/EarningsSequenceDiagram.png" alt="EarningsSequenceDiagram" width="800"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copy-subject-feature"><a class="link" href="#copy-subject-feature">3.5. Copy Subject feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The copy subject command operates by making a duplicate of the selected subject of the student and adds it the other student.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the other student already has the same subject, append the content of the subject instead. State of each syllabus is also copied. Duplicate syllabus will not be added.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Classes related to copy command and its functionality are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates CopySubCommandParser which parses the input from user.</p>
+</li>
+<li>
+<p><code>CopySubCommandParser</code>&#8201;&#8212;&#8201;Parses user&#8217;s input into proper argument and creates CopySubCommand</p>
+</li>
+<li>
+<p><code>CopySubCommand</code>&#8201;&#8212;&#8201;Updates the target student based on the argument</p>
+</li>
+<li>
+<p><code>SubjectsUtil</code>&#8201;&#8212;&#8201;Manage the finding and copying aspect of copysub command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario with 2 possible outcomes and how to copy function addresses each case.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Assuming that the application isn&#8217;t empty, the user executes <code>copysub 1 2 4</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Assuming that each argument given is a valid input, the system will perform the copysub command.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The system will locate the <em>first</em> student from the student list, and make a separate copy of the <em>second</em> subject stored under the student data.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The system will locate the <em>fourth</em> student from the student list, and make a decision.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 5a. If the same subject as <em>second</em> subject in Step 4, system will append the content of subject of <em>second</em> subject into the <em>fourth</em> student.</p>
+</li>
+<li>
+<p>Step 5b. If there is no subject same as <em>second</em> subject in Step 4, system will add the <em>second</em> subject as a new subject under the <em>fourth</em> student.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The process is described with sequence diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CopySubSequenceDiagrams.png" alt="CopySubSequenceDiagrams" width="650">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-delete-subject"><a class="link" href="#add-delete-subject">3.6. Add / Delete Subject</a></h3>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The add / delete subject mechanism is facilitated with <code>TutorHelperParser</code>.
+Classes related to the functionality of the mechanism are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a <code>AddSubCommandParser</code> / <code>DeleteSubCommandParser</code> object and parses the user&#8217;s input.</p>
+</li>
+<li>
+<p><code>AddSubCommandParser</code> / <code>DeleteSubCommandParser</code>&#8201;&#8212;&#8201;Analyses user input to create a corresponding <code>Command</code> object.</p>
+</li>
+<li>
+<p><code>AddSubCommand</code> / <code>DeleteSubCommand</code>&#8201;&#8212;&#8201;Execution results in addition / deletion of a subject for a specified student index.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how the add / delete subject mechanism behaves at each step.</p>
+</div>
+<div class="sect4">
+<h5 id="add-subject"><a class="link" href="#add-subject">Add Subject</a></h5>
+<div class="paragraph">
+<p>Step 1. The user launches the application.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The tutor executes a command of the format <code>addsub STUDENT_INDEX s/SUBJECT</code> on the CLI.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The arguments are parsed by <code>AddSubCommandParser</code>, which produces an instance of <code>AddSubCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>AddSubCommand.execute()</code> is called, and the supplied subject is added for the student at the specified student index by TutorHelper.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="delete-subject"><a class="link" href="#delete-subject">Delete Subject</a></h5>
+<div class="paragraph">
+<p>Step 1. The user launches the application.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The tutor executes a command of the format <code>deletesub STUDENT_INDEX SUBJECT_INDEX</code> on the CLI.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The arguments are parsed by <code>DeleteSubCommandParser</code>, which produces an instance of <code>DeleteSubCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>DeleteSubCommand.execute()</code> is called, and the subject at the specified subject index of the student at the specified student index is deleted by TutorHelper.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The TutorHelper has to have at least 1 student as a precondition for both <code>addsub</code> and <code>deletesub</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>deletesub</code> requires the student at the specified student index to have at least two subjects. After deletion, a student cannot have 0 subjects.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>addsub</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddSubSequenceDiagram.png" alt="AddSubSequenceDiagram" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>deletesub</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteSubSequenceDiagram.png" alt="DeleteSubSequenceDiagram" width="650">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-syllabus"><a class="link" href="#edit-syllabus">3.7. Edit Syllabus</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Classes that are related to edit syllabus and their functionality are as listed below:
+* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a EditSyllCommandParser object and calls parse method in object to parse user&#8217;s argument input.
+* <code>EditSyllCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a EditSyllCommand object with the student,subject,syllabus index object as well as the new Syllabus object as the argument.
+* <code>EditSyllCommand</code>&#8201;&#8212;&#8201;Locates the corresponding syllabus to update and calls corresponding subject to edit syllabus.
+* <code>Subject</code>&#8201;&#8212;&#8201;Locates and edits existing syllabus entry with new syllabus entry</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the earning mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The tutor launches the application.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. He/she executes the command in the format <code>editsyll STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX sy/SYLLABUS</code> on the CLI.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The arguments are parsed by <code>EditSyllCommandParser</code>, which produces an instance of <code>EditSyllCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>EditSyllCommand.execute()</code> is called, and the syllabus at the specified subject index and syllabus index of the student at the specified student index is edited by TutorHelper.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The TutorHelper has to have at least 1 student as a precondition for <code>editsyll</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the <code>editsyll</code> operation works:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/EditSyllSequenceDiagram.png" alt="EditSyllSequenceDiagram" width="800"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+</li>
+<li>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We use asciidoc for writing documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
+Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps to convert the project documentation files to PDF format.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
+</li>
+<li>
+<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
+</li>
+<li>
+<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
+</li>
+<li>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Attributes left unset in the <code>build.gradle</code> file will use their <strong>default value</strong>, if any.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. List of site-wide attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-name</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The name of the website.
+If set, the name will be displayed near the top of the page.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-githuburl</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>URL to the site&#8217;s repository on <a href="https://github.com">GitHub</a>.
+Setting this will add a "View on GitHub" link in the navigation bar.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-seedu</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Define this attribute if the project is an official SE-EDU project.
+This will render the SE-EDU navigation bar at the top of the page, and add some SE-EDU-specific navigation items.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></h3>
+<div class="paragraph">
+<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Attributes left unset in <code>.adoc</code> files will use their <strong>default value</strong>, if any.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-section</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Site section that the document belongs to.
+This will cause the associated item in the navigation bar to be highlighted.
+One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutcomes</code>*, <code>AboutUs</code>, <code>ContactUs</code></p>
+</div>
+<div class="paragraph">
+<p><em>* Official SE-EDU projects only</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-site-header</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set this attribute to remove the site navigation bar.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="site-template"><a class="link" href="#site-template">4.6. Site Template</a></h3>
+<div class="paragraph">
+<p>The files in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
+You can modify them to change some properties of the site&#8217;s design.</p>
+</div>
+<div class="paragraph">
+<p>The files in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
+These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Modifying the template files in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
+The SE-EDU team does not provide support for modified template files.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
+<div class="paragraph">
+<p>There are three ways to run tests.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
+</li>
+<li>
+<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Method 2: Using Gradle</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 3: Using Gradle (headless)</strong></p>
+</div>
+<div class="paragraph">
+<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
+</div>
+<div class="paragraph">
+<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
+<div class="paragraph">
+<p>We have two types of tests:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
+</li>
+<li>
+<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
+e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+</li>
+<li>
+<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
+e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+</li>
+<li>
+<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
+e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<div class="paragraph">
+<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reason: One of its dependencies, <code>HelpWindow.html</code> in <code>src/main/resources/docs</code> is missing.</p>
+</li>
+<li>
+<p>Solution: Execute Gradle task <code>processResources</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<div class="paragraph">
+<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<div class="paragraph">
+<p>Here are the steps to create a new release.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the version number in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+</li>
+<li>
+<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
+</li>
+<li>
+<p>Tag the repo with the version number. e.g. <code>v0.1</code></p>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<div class="paragraph">
+<p>A project often depends on third-party libraries. For example, TutorHelper depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
+a. Include those libraries in the repo (this bloats the repo size)<br>
+b. Require developers to download those libraries manually (this creates extra work for developers)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GetStartedProgramming"><a class="link" href="#GetStartedProgramming">Appendix A: Product Scope</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Current:<br></p>
@@ -17,7 +1599,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Value:</p>
+<p>Value Proposition:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -29,7 +1611,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">2. User Stories</a></h2>
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -45,12 +1627,15 @@
 <li>
 <p>As a tutor, I want to keep track of my students' payments.</p>
 </li>
+<li>
+<p>As a tutor, I want to be able to edit teaching data such as editing my syllabus to keep up with changes in school&#8217;s curriculum or updating payments made by students.</p>
+</li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">3. Use Cases</a></h2>
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -194,7 +1779,7 @@ MSS:
 <div class="content">
 <pre>System: TutorHelper
 Actor: Tutor
-Precondition: Tutor has recorded payment from students before.
+Precondition: Tutor has recorded payment for students before.
 MSS:
   1. Tutor request for earnings for a specific month and year.
   2. System searches for all the payment records made from all the students for that particular month and year.
@@ -203,7 +1788,14 @@ MSS:
   Use case end.
  Extensions:
   2a. System does not find any payment recorded for that month and year.
-    2a1. System displays $0 as result.</pre>
+    2a1. System displays $0 as result.
+  2b. Tutor does not enter all the required entries correctly
+    2b1. System displays error message
+    2b2. System gives tutor an example of a correct entry.
+    2b3. Repeat step 1
+  2c. Tutor does not enter a valid entry
+    2c1. System displays error message telling tutor that entry is invalid
+    2c2. Repeat step 1.</pre>
 </div>
 </div>
 </li>
@@ -242,7 +1834,7 @@ MSS:
 </div>
 </div>
 <div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">4. Non-Functional Requirements</a></h2>
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -252,573 +1844,571 @@ MSS:
 <li>
 <p>The system should be understandable to a novice in working with computers.</p>
 </li>
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">5. Implementation</a></h2>
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
+<dd>
+<p>A contact detail that is not meant to be shared with others</p>
+</dd>
+<dt class="hdlist1"><a id="subject"></a> Subject</dt>
+<dd>
+<p>A branch of knowledge studied by the student</p>
+</dd>
+<dt class="hdlist1"><a id="syllabus"></a> Syllabus</dt>
+<dd>
+<p>The required topics to be covered under the subject</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="group-students-feature"><a class="link" href="#group-students-feature">5.1. Group Students feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">5.1.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>Classes related to Group and its functionality is listed below:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a GroupCommandParser object and parses the user&#8217;s input.</p>
-</li>
-<li>
-<p><code>GroupCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, creates a predicate based on the input and returns a GroupCommand object with the predicate as the argument.</p>
-</li>
-<li>
-<p><code>GroupCommand</code>&#8201;&#8212;&#8201;Filters the list based on the predicate and displays it to the user.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the group mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. Assuming that the application isn&#8217;t empty, the user executes 'group Monday' command to group all students with a class on Monday. The group command will be called by <code>GroupCommandParser.parse()</code>, parsing the argument to check against. The application will check the list and display all students with classes on Monday, sorted based on the earliest timing.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The user can execute <code>list</code> to re-display the full list of students again.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The user can execute <code>undo</code> to undo the sorting done to the list.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The group command is CASE-SENSITIVE. E.g. Passing <code>MONDAY</code> as an input instead of <code>Monday</code> will throw an error.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Only 12-hr timings are valid.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the group operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/GroupSequenceDiagram.png" alt="GroupSequenceDiagram" width="650">
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="students-payment-feature"><a class="link" href="#students-payment-feature">5.2. Students payment feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The Payment mechanism is facilitated by VersionedTutorHelper and FilteredList&lt;Person&gt;. VersionedTutorHelper extends from TutorHelper and classes related to Payment calls methods from VersionedTutorHelper to retrieve students' data, update them and display accordingly.</p>
-</div>
-<div class="paragraph">
-<p>Classes that are related to Payment and their functionality are as listed below:
-* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.
-* <code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the argument.
-* <code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.
-* <code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.
-Step 1. The tutor launches the application and wants to record a payment for his/her student called Alice.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. He/she makes a mental note of Alice&#8217;s student index as listed in the left side of the application.</p>
-</div>
-<div class="paragraph">
-<p>Step 2a. Lets say, Alice has student id 2. The payment she made was $400 for the month and year of November 2018. He/she proceeds to key in command in the following format: paid 2 400 11 2018</p>
-</div>
-<div class="paragraph">
-<p>Step 2b. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.</p>
-</div>
-<div class="paragraph">
-<p>Step 2c. PayCommandParser then checks if the inputs are of the correct format and it initialises a Payment object with the inputs.</p>
-</div>
-<div class="paragraph">
-<p>Step 2d. The PayCommandParser method then returns a PayCommand object with payment object.</p>
-</div>
-<div class="paragraph">
-<p>Step 2e. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.</p>
-</div>
-<div class="paragraph">
-<p>Step 2f. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Person class.</p>
-</div>
-<div class="paragraph">
-<p>Step 2g. Alice person class contains payment class. The PayCommand execute method proceeds to call the method updatePayments, then calls updatePerson in model class to modify Alice Person class with the new updated payment.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice</p>
-</div>
-<div class="paragraph">
-<p>Step 4. XmlAdaptedPay is responsible for converting the data type to the appropriate data type for display through the toModelType method.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Payment list will keep up to 10 payments at any one time. When the 11th payment is added, the payment list will remove the oldest payment record.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The diagram below illustrates the sequence diagram.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/PaymentSequenceDiagram.png" alt="PaymentSequenceDiagram" width="800"></span></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="students-edit-payment-feature"><a class="link" href="#students-edit-payment-feature">5.3. Students edit payment feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>Classes that are related to Payment and their functionality are as listed below:
-* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.
-* <code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the argument.
-* <code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.
-* <code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.
-Step 1. The tutor launches the application and wants to record a payment for his/her student called Alice.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. He/she makes a mental note of Alice&#8217;s student index as listed in the left side of the application.</p>
-</div>
-<div class="paragraph">
-<p>Step 2a. Lets say, Alice has student id 2. The payment she made was $400 for the month and year of November 2018. He/she proceeds to key in command in the following format: paid 2 400 11 2018</p>
-</div>
-<div class="paragraph">
-<p>Step 2b. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.</p>
-</div>
-<div class="paragraph">
-<p>Step 2c. PayCommandParser check if the inputs are of the correct format and it initialises a Payment object with the inputs.</p>
-</div>
-<div class="paragraph">
-<p>Step 2d. The PayCommandParser method then returns a PayCommand object with payment object.</p>
-</div>
-<div class="paragraph">
-<p>Step 2e. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.</p>
-</div>
-<div class="paragraph">
-<p>Step 2f. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Person class.</p>
-</div>
-<div class="paragraph">
-<p>Step 2g. Alice person class contains payment class. The PayCommand execute method proceeds to call the method updatePayments, then calls updatePerson in model class to modify Alice Person class with the new updated payment.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice</p>
-</div>
-<div class="paragraph">
-<p>Step 4. XmlAdaptedPay is responsible for converting the data type to the appropriate data type for display through the toModelType method.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below illustrates the payment edit feature</p>
-</div>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Current implementation</p>
-<div class="literalblock">
-<div class="content">
-<pre>The edit Payment mechanism is facilitated by VersionedTutorHelper and FilteredList&lt;Person&gt;. VersionedTutorHelper extends from TutorHelper and classes related to Payment calls methods from VersionedTutorHelper to retrieve students' data, update the Payment entry and display accordingly.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>To be clearer, classes that are related to Payment and their functionality are as listed below:
-a. TutorHelperParser:
-    -Creates a PayCommandParser object and calls parse method in object to parse user's argument input.
-c. PayCommandParser
-    -Analyses the user's input and checks for any violation of syntax.
-    -Creates a Payment object with users' input.
-    -Returns a PayCommand object with Payment object being fed in.
-b. PayCommand:
-    -Takes in a Payment object in its constructor to edit an existing Payment object
-    -Calls on methods in VersionedTutorHelper to update edit on existing Payments made.
-d. Payment:
-    -Contains fields to store student id, amount paid, month of payment and year of payment to compare if it is to be edited
-e. XmlAdaptedPay
-    -Responsible for converting the format of data so that it can be displayed below the command text box and stored.
-f. BrowserPanel
-    -Responsible for displaying payment details in browser panel.</pre>
-</div>
-</div>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
 </li>
 <li>
-<p>Example usage scenario</p>
-<div class="literalblock">
-<div class="content">
-<pre>2a. The tutor launches the application and wants to edit an existing payment for his/her student called Alice by updating the amount by another 200.
-2b. He/she makes a mental note of Alice's student index as listed in the left side of the application as well as the month and year of the existing payment.
-2c. Lets say, Alice has student id 2. The existing payment she made was $400 for the month and year of November 2018. He/she proceeds to key in command in the following format: paid idx/2 amt/200 m/11 y/2018
-    2C1. The tutor's input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.
-    2C3. From the prefixes, PayCommandParser makes use of ArgumentMultimap to check if the inputs are of the correct format and it initialises a Payment object with the inputs.
-    2C4. The PayCommandParser method then returns a PayCommand object with payment object.
-    2C5. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.
-    2C6. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Person class.
-    2C7. Alice person class contains payment class. The PayCommand execute method proceeds to call editPaymentField to loop through Alice's list of Payments to find the existing payment and update with a new updated list of payments.
-2d. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice
-    2D1. XmlAdaptedPay is responsible for converting the data type to the appropriate data type for display through the toModelType method.
-2e. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>The sequence diagram below illustrates the payment edit feature</p>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="images/EditPaymentSequenceDiagram.png" alt="EditPaymentSequenceDiagram" width="800"></span></p>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
 </div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tutor-s-earnings-feature"><a class="link" href="#tutor-s-earnings-feature">5.4. Tutor&#8217;s Earnings feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The Earnings mechanism is mainly facilitated by the filteredPersonList found in model. It works by checking through all past recorded payments for that specific month and year as requested by the tutor and returns the total earnings.
-The classes related to Earnings are EarningsCommand, EarningsCommandParser.</p>
-</div>
-<div class="ulist">
-<ul>
+<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">F.2. Deleting a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.</p>
+<p>Deleting a student while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list.</p>
 </li>
 <li>
-<p><code>EarningsCommandParser</code> --Takes in users' input and checks if it adheres to the required format. Returns a EarningsCommand with the month and year passed in.</p>
+<p>Test case: <code>delete 1</code><br>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
-<p><code>EarningsCommand</code>&#8201;&#8212;&#8201;Takes in month and year as inputs in its constructed. In Execute() method, it performs the checking of all recorded payments and returns the total payments received for that specified month and year.</p>
+<p>Test case: <code>delete 0</code><br>
+Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
-</ul>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the earning mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The tutor launches the application and wants to view his/her earnings for the month of November 2018.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. He/she enters input in the format of: earnings 11 2018</p>
-</div>
-<div class="paragraph">
-<p>Step 2a. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, earnings) and creates the EarningsCommandParser object, followed by calling parse method, with the arguments passed in.</p>
-</div>
-<div class="paragraph">
-<p>Step 2b. EarningCommandParser checks if the inputs are of the correct format.</p>
-</div>
-<div class="paragraph">
-<p>Step 2b. The PayCommandParser method then returns a EarningCommand object with month and year passed in.</p>
-</div>
-<div class="paragraph">
-<p>Step 2c. This is propagated back to the LogicManager class which then proceed to call execute method in the returned EarningsCommand object.</p>
-</div>
-<div class="paragraph">
-<p>Step 2d. The execute method in EarningsCommand proceed to obtain the list of students from the model and proceeds to search for Payment records made for that requested month and year.</p>
-</div>
-<div class="paragraph">
-<p>Step 2e. The amount is then returned.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The tutor will then see a message below the command text box, showing the earnings for the requested month and year.</p>
-</div>
-<div class="paragraph">
-<p>The diagram below illustrates the sequence diagram.
-<span class="image"><img src="images/EarningsSequenceDiagram.png" alt="EarningsSequenceDiagram" width="800"></span></p>
-</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="copy-subject-feature"><a class="link" href="#copy-subject-feature">5.5. Copy Subject feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The copy subject command operates by making a duplicate of the selected subject of the student and adds it the other student.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the other student already has the same subject, append the content of the subject instead. State of each syllabus is also copied. Duplicate syllabus will not be added.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Classes related to copy command and its functionality are listed below:</p>
-</div>
-<div class="ulist">
-<ul>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates CopySubCommandParser which parses the input from user.</p>
-</li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
-<p><code>CopySubCommandParser</code>&#8201;&#8212;&#8201;Parses user&#8217;s input into proper argument and creates CopySubCommand</p>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
 </li>
-<li>
-<p><code>CopySubCommand</code>&#8201;&#8212;&#8201;Updates the target person based on the argument</p>
+</ol>
+</div>
 </li>
-<li>
-<p><code>SubjectsUtil</code>&#8201;&#8212;&#8201;Manage the finding and copying aspect of copysub command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario with 2 possible outcomes and how to copy function addresses each case.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. Assuming that the application isn&#8217;t empty, the user executes <code>copysub 1 2 4</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Assuming that each argument given is a valid input, the system will perform the copysub command.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. The system will locate the <em>first</em> student from the student list, and make a separate copy of the <em>second</em> subject stored under the student data.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. The system will locate the <em>fourth</em> student from the student list, and make a decision.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Step 5a. If the same subject as <em>second</em> subject in Step 4, system will append the content of subject of <em>second</em> subject into the <em>fourth</em> student.</p>
-</li>
-<li>
-<p>Step 5b. If there is no subject same as <em>second</em> subject in Step 4, system will add the <em>second</em> subject as a new subject under the <em>fourth</em> student.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The process is described with sequence diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CopySubSequenceDiagrams.png" alt="CopySubSequenceDiagrams" width="650">
-</div>
-</div>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-delete-subject"><a class="link" href="#add-delete-subject">5.6. Add / Delete Subject</a></h3>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">5.6.1. Implementation</a></h4>
-<div class="paragraph">
-<p>The add / delete subject mechanism is facilitated with <code>TutorHelperParser</code>.
-Classes related to the functionality of the mechanism are listed below:</p>
-</div>
-<div class="ulist">
-<ul>
+<h3 id="grouping"><a class="link" href="#grouping">F.4. Grouping</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a <code>AddSubCommandParser</code> / <code>DeleteSubCommandParser</code> object and parses the user&#8217;s input.</p>
+<p>Grouping by day or time while all persons are listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the 'list' command. Multiple persons in the list.</p>
 </li>
 <li>
-<p><code>AddSubCommandParser</code> / <code>DeleteSubCommandParser</code>&#8201;&#8212;&#8201;Analyses user input to create a corresponding <code>Command</code> object.</p>
+<p>Test case: 'group Monday'<br>
+Expected: X students listed! (X is the number of students meeting the requirement)</p>
 </li>
 <li>
-<p><code>AddSubCommand</code> / <code>DeleteSubCommand</code>&#8201;&#8212;&#8201;Execution results in addition / deletion of a subject for a specified student index.</p>
+<p>Test case: 'group 3:00pm'<br>
+Expected: X students listed!</p>
 </li>
-</ul>
+<li>
+<p>Test case: 'group Monday 3pm'<br>
+Expected: Invalid command format. Group command message usage is shown.</p>
+</li>
+<li>
+<p>Other incorrect grouping commands to try 'group', 'group monday', 'group 3pm'<br>
+Expected: Invalid command format. Group command message usage is shown.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how the add / delete subject mechanism behaves at each step.</p>
-</div>
-<div class="sect4">
-<h5 id="add-subject"><a class="link" href="#add-subject">Add Subject</a></h5>
-<div class="paragraph">
-<p>Step 1. The user launches the application.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The tutor executes a command of the format <code>addsub STUDENT_INDEX s/SUBJECT</code> on the CLI.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The arguments are parsed by <code>AddSubCommandParser</code>, which produces an instance of <code>AddSubCommand</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>AddSubCommand.execute()</code> is called, and the supplied subject is added for the student at the specified student index by TutorHelper.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="delete-subject"><a class="link" href="#delete-subject">Delete Subject</a></h5>
-<div class="paragraph">
-<p>Step 1. The user launches the application.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The tutor executes a command of the format <code>deletesub STUDENT_INDEX SUBJECT_INDEX</code> on the CLI.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. The arguments are parsed by <code>DeleteSubCommandParser</code>, which produces an instance of <code>DeleteSubCommand</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. <code>DeleteSubCommand.execute()</code> is called, and the subject at the specified subject index of the student at the specified student index is deleted by TutorHelper.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The TutorHelper has to have at least 1 student as a precondition for both <code>addsub</code> and <code>deletesub</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<code>deletesub</code> requires the student at the specified student index to have at least two subjects. After deletion, a student cannot have 0 subjects.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>addsub</code> operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AddSubSequenceDiagram.png" alt="AddSubSequenceDiagram" width="650">
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>deletesub</code> operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeleteSubSequenceDiagram.png" alt="DeleteSubSequenceDiagram" width="650">
-</div>
-</div>
-</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-syllabus"><a class="link" href="#edit-syllabus">5.7. Edit Syllabus</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.7.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>Classes that are related to edit syllabus and their functionality are as listed below:
-* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a EditSyllCommandParser object and calls parse method in object to parse user&#8217;s argument input.
-* <code>EditSyllCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a EditSyllCommand object with the person,subject,syllabus index object as well as the new Syllabus object as the argument.
-* <code>EditSyllCommand</code>&#8201;&#8212;&#8201;Locates the corresponding syllabus to update and calls corresponding subject to edit syllabus.
-* <code>Subject</code>&#8201;&#8212;&#8201;Locates and edits existing syllabus entry with new syllabus entry</p>
+<h3 id="making-payment-for-a-student"><a class="link" href="#making-payment-for-a-student">F.5. Making Payment for a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a payment while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the 'list' command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 8 2018'<br>
+Expected: Payment for this student is added. Details of the paid contact shown in the status message.</p>
+</li>
+<li>
+<p>Test case: 'paid 0 200 8 2018'<br>
+Expected: Index is not a non-zero unsigned integer.</p>
+</li>
+<li>
+<p>Test case: 'paid X 200 8 920' (X is a number greater than the list)<br>
+Expected: The student index provided is invalid.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 -200 8 2018'<br>
+Expected: Amount should only contain zero or positive numbers, and has to be smaller than 10 000.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 16 2018'<br>
+Expected: Month should only contain numbers between 1 to 12, inclusive.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 8 920'<br>
+Expected: Year should only contain 4 digits numbers.</p>
+</li>
+<li>
+<p>Other incorrect payment commands to try: <code>paid</code>, <code>paid x</code> (where x is any number), 'paid x 8',
+'paid x 200 8', 'paid x 200 2018'
+Expected: Invalid command format. Pay command message usage is shown.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the earning mechanism behaves at each step.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Step 1. The tutor launches the application.</p>
 </div>
-<div class="paragraph">
-<p>Step 2. He/she executes the command in the format <code>editsyll STUDENT_INDEX SUBJECT_INDEX SYLLABUS_INDEX sy/SYLLABUS</code> on the CLI.</p>
+<div class="sect2">
+<h3 id="editing-payment-for-a-student"><a class="link" href="#editing-payment-for-a-student">F.6. Editing Payment for a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a payment while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the 'list' command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Prerequisites: Payment for the month and year must have been added previously.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 8 2018'<br>
+Expected: Payment for this student has been edited: Details of the paid contact shown in the status message.</p>
+</li>
+<li>
+<p>Test case: 'paid 0 200 8 2018'<br>
+Expected: Index is not a non-zero unsigned integer.</p>
+</li>
+<li>
+<p>Test case: 'paid X 200 8 920' (X is a number greater than the list)<br>
+Expected: The student index provided is invalid.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 -200 8 2018'<br>
+Expected: Amount should only contain zero or positive numbers, and has to be smaller than 10 000.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 16 2018'<br>
+Expected: Month should only contain numbers between 1 to 12, inclusive.</p>
+</li>
+<li>
+<p>Test case: 'paid 1 200 8 920'<br>
+Expected: Year should only contain 4 digits numbers.</p>
+</li>
+<li>
+<p>Other incorrect payment commands to try: <code>paid</code>, <code>paid x</code> (where x is any number), 'paid x 8',
+'paid x 200 8', 'paid x 200 2018'
+Expected: Invalid command format. Pay command message usage is shown.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Step 3. The arguments are parsed by <code>EditSyllCommandParser</code>, which produces an instance of <code>EditSyllCommand</code>.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>Step 4. <code>EditSyllCommand.execute()</code> is called, and the syllabus at the specified subject index and syllabus index of the student at the specified student index is edited by TutorHelper.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The TutorHelper has to have at least 1 student as a precondition for <code>editsyll</code>.
-</td>
-</tr>
-</table>
+<div class="sect2">
+<h3 id="viewing-earnings-command"><a class="link" href="#viewing-earnings-command">F.7. Viewing earnings command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Display earnings made by the tutor</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: 'earnings 8 2018'<br>
+Expected: Earnings: $X (X is the total earnings)</p>
+</li>
+<li>
+<p>Test case: 'earnings 8 299'<br>
+Expected: Year should only contain 4 digits numbers.</p>
+</li>
+<li>
+<p>Test case: 'earnings 0 2018'<br>
+Expected:  Month should only contain numbers between 1 to 12, inclusive.</p>
+</li>
+<li>
+<p>Other incorrect earnings commands to try: 'earnings', 'earnings 8', 'earnings 2018'<br>
+Expected: Invalid command format. Earnings command message usage is shown.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>The diagram below shows how the <code>editsyll</code> operation works:</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="images/EditSyllSequenceDiagram.png" alt="EditSyllSequenceDiagram" width="800"></span></p>
 </div>
+<div class="sect2">
+<h3 id="add-subject-command"><a class="link" href="#add-subject-command">F.8. Add subject command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a subject to an existing student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: TutorHelper is not empty</p>
+</li>
+<li>
+<p>Test case: 'addsub 1 s/Chemistry'<br>
+Expected: Added subject to student: Display student details</p>
+</li>
+<li>
+<p>Test case: 'addsub X s/Chemistry' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'addsub 1 s/X' (X is a subject student index 1 is already taking)<br>
+Expected: Subject is already taken by student: Display student index.</p>
+</li>
+<li>
+<p>Other incorrect addsub commands to try: 'addsub', 'addsub 2', 'addsub 1 Physics', 'áddsub Physics'<br>
+Expected: Invalid command format. addsub command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">6. Glossary</a></h2>
+<h2 id="delete-subject-command"><a class="link" href="#delete-subject-command">7. Delete subject command</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Subject : a branch of knowledge studied by the student</p>
+<p>Deleting subject from existing student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Tutorhelper is not empty</p>
 </li>
 <li>
-<p>Syllabus: the required topics to be covered under the subject</p>
+<p>Test case: 'deletesub 1 1'<br>
+Expected: Deleted subject from student: Display student details</p>
+</li>
+<li>
+<p>Test case: 'deletesub 1 X' (X is an invalid subject index)<br>
+Expected: The subject index provided is invalid.</p>
+</li>
+<li>
+<p>Test case: 'deletesub X 1' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Other incorrect deletesub commands to try: 'deletesub', 'deletesub 1'<br>
+Expected: Invalid command format. deletesub command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="copy-subject-command"><a class="link" href="#copy-subject-command">7.1. Copy subject command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copying a subject from one student profile to another student.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Tutorhelper is not empty.</p>
+</li>
+<li>
+<p>Test case: 'copysub 1 1 2'<br>
+Expected: Copied syllabus to Student: Display student&#8217;s details.</p>
+</li>
+<li>
+<p>Test case: 'copysub 1 X 2' (X is an invalid subject index of the source student)<br>
+Expected: The subject index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'copysub 1 1 X' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'copysub X 1 1' (X is in invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'copysub 1 1 1'<br>
+Expected: Copying subject to the same student is not allowed: Display student&#8217;s details.</p>
+</li>
+<li>
+<p>Test case: 'copysub 1 X 3' (X is an existing subject in student 3)<br>
+Expected: Copied syllabus to Student: Display destination student details</p>
+</li>
+<li>
+<p>Other incorrect copysub commands to try: 'copysub', 'copysub 1', 'copysub 1 1'<br>
+Expected: Invalid command format. copysub command message usage is shown.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 01:45:37 UTC</div></div></div></body></html>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-syllabus-command"><a class="link" href="#add-syllabus-command">8. Add syllabus command</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adds a new syllabus topic for a specified student and subject</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Tutorhelper must not be empty</p>
+</li>
+<li>
+<p>Test case: 'addsyll 1 1 sy/Integration'<br>
+Expected: Added syllabus to Student: Display destination student details</p>
+</li>
+<li>
+<p>Test case: 'addsyll X 1 sy/Integration' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'addsyll 1 X sy/Integration' (X is an invalid subject index)<br>
+Expected: The subject index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'addsyll 1 1 sy/X' (X is a syllabus already in student)<br>
+Expected: Syllabus is already in Student: Display student details.</p>
+</li>
+<li>
+<p>Other incorrect addsyll commands to try: 'addsyll', 'addsyll 1', 'addsyll 1 1', 'addsyll 1 1 sy/'<br>
+Expected: Invalid command format. addsyll command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="delete-syllabus-command"><a class="link" href="#delete-syllabus-command">9. Delete syllabus command</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deletes a syllabus from an existing student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Tutorhelper must not be empty</p>
+</li>
+<li>
+<p>Test case: 'deletesyll 1 1 1'<br>
+Expected: Removed selected syllabus from Student: Display student&#8217;s details.</p>
+</li>
+<li>
+<p>Test case: 'deletesyll X 1 1' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'deletesyll 1 X 1' (X is an invalid subject index)<br>
+Expected: The subject index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'deletesyll 1 1 X' (X is an invalid syllabus index)<br>
+Expected: The syllabus index provided is invalid</p>
+</li>
+<li>
+<p>Other incorrect deletesyll commands to try: 'deletesyll', 'deletesyll 1', 'deletesyll 1 1'<br>
+Expected: Invalid command format. deletesyll command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="edit-syllabus-command"><a class="link" href="#edit-syllabus-command">10. Edit syllabus command</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edits a syllabus from an existing student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Tutorhelper must not be empty</p>
+</li>
+<li>
+<p>Test case: 'editsyll 1 1 1 sy/Integration'<br>
+Expected: Edited syllabus to Student: Display student&#8217;s details.</p>
+</li>
+<li>
+<p>Test case: 'editsyll X 1 1 sy/Integration' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'editsyll 1 X 1 sy/Integration' (X is an invalid subject index)<br>
+Expected: The subject index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'editsyll 1 1 X sy/Integration' (X is an invalid syllabus index)<br>
+Expected: The syllabus index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'editsyll 1 1 X sy/' (X is an invalid syllabus index)<br>
+Expected: Syllabus can take any values, and it should not be blank or preceded by white space.</p>
+</li>
+<li>
+<p>Other incorrect editsyll commands to try: 'editsyll', 'editsyll 1', 'editsyll 1 1', 'editsyll 1 1 1'<br>
+Expected: Invalid command format. editsyll command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="mark-command"><a class="link" href="#mark-command">10.1. Mark command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Toggles the state of a specified syllabus topic for a specified student and subject.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Tutorhelper must not be empty</p>
+</li>
+<li>
+<p>Test case: 'mark 1 1 1'<br>
+Expected: Changed selected syllabus from Student: Display student&#8217;s details</p>
+</li>
+<li>
+<p>Test case: 'mark X 1 1 ' (X is an invalid student index)<br>
+Expected: The student index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'mark 1 X 1 ' (X is an invalid subject index)<br>
+Expected: The subject index provided is invalid</p>
+</li>
+<li>
+<p>Test case: 'mark 1 1 X ' (X is an invalid syllabus index)<br>
+Expected: The syllabus index provided is invalid</p>
+</li>
+<li>
+<p>Other incorrect mark commands to try: 'mark', 'mark 1', 'mark 1 1'<br>
+Expected: Invalid command format. marksyll command message usage is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 07:04:54 UTC</div></div></div></body></html>
