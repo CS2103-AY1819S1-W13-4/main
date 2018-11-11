@@ -240,7 +240,10 @@ Changes the first syllabus topic of the first subject of the third student to "K
 <p>As a tutor, I want to know my students' individual progress so that I know what topics I need to cover for the next tuition session.</p>
 </li>
 <li>
-<p>As a tutor, I want to keep track of my students' payments.</p>
+<p>As a tutor, I want to keep track of my students' payments so that i know who to collect fees from.</p>
+</li>
+<li>
+<p>As a tutor, I want to keep track of my monthly earnings so that i can manage my financial accounts.</p>
 </li>
 <li>
 <p>As a tutor, I want to be able to edit teaching data such as editing my syllabus to keep up with changes in school&#8217;s curriculum or updating payments made by students.</p>
@@ -298,48 +301,50 @@ The TutorHelper has to have at least 1 student as a precondition for <code>edits
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h4>
 <div class="paragraph">
-<p>The Edit Payment mechanism is facilitated by VersionedTutorHelper and FilteredList&lt;Student&gt;. VersionedTutorHelper extends from TutorHelper and classes related to Payment calls methods from VersionedTutorHelper to retrieve students' data, update them and display accordingly.</p>
+<p>Classes that are related to edit Payment and their functionality are as listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.</p>
+</li>
+<li>
+<p><code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the para.</p>
+</li>
+<li>
+<p><code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.</p>
+</li>
+<li>
+<p><code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Classes that are related to Payment and their functionality are as listed below:
-* <code>TutorHelperParser</code>&#8201;&#8212;&#8201;Creates a PayCommandParser object and calls parse method in object to parse user&#8217;s argument input.
-* <code>PayCommandParser</code>&#8201;&#8212;&#8201;Analyses the input, checks for any violation of syntax and returns a PayCommand object with the Payment object as the argument.
-* <code>PayCommand</code>&#8201;&#8212;&#8201;Calls on methods in VersionedTutorHelper to update new Payments made.
-* <code>Payment</code>&#8201;&#8212;&#8201;-Contains fields to store student id, amount paid, month of payment and year of payment.</p>
+<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the payment mechanism behaves at each step.
-Step 1. The tutor launches the application and wants to record a payment for his/her student called Alice.</p>
+<p>Step 1. The tutor launches the application and wants to edit a payment for his/her student called Alice.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. He/she makes a mental note of Alice&#8217;s student index as listed in the left side of the application.</p>
 </div>
 <div class="paragraph">
-<p>Step 2a. Lets say, Alice has student id 2. The payment she made was $400 for the month and year of November 2018. He/she proceeds to key in the command in the following format: paid 2 400 11 2018</p>
+<p>Step 3. Lets say, Alice has student id 2. The payment that the tutor wants to update is $300 for the month and year of November 2018. He/she proceeds to key in the command in the following format: paid 2 300 11 2018</p>
 </div>
 <div class="paragraph">
-<p>Step 2b. The tutor&#8217;s input is passed from the text box through LogicManager class to TutorHelperParser. TutorHelperParser sieves out the arguments and command word(in this case, paid) and creates the PayCommandParser object, followed by calling parse method, with the arguments passed in.</p>
+<p>Step 4. Assuming that each argument given is a valid input, the system will perform the Payment command.</p>
 </div>
 <div class="paragraph">
-<p>Step 2c. PayCommandParser then checks if the inputs are of the correct format and it initialises a Payment object with the inputs.</p>
+<p>Step 5. The system will locate Alice from the student list.</p>
 </div>
 <div class="paragraph">
-<p>Step 2d. The PayCommandParser method then returns a PayCommand object with payment object.</p>
+<p>Step 5a. The system will check that payment for the month and year of November 2018 has been recorded for Alice before, hence it will proceed to update the payment amount instead of creating a new payment entry.</p>
 </div>
 <div class="paragraph">
-<p>Step 2e. This is propagated back to the LogicManager class which then proceed to call execute method in the returned PayCommand object.</p>
+<p>Step 6. Now, payment details have been updated and the tutor will be able to see a successful edit payment message under the command box.</p>
 </div>
 <div class="paragraph">
-<p>Step 2f. The execute method in PayCommand proceed to obtain the list of students from the model. Since 2 is a valid student index, it proceeds to retrieve information from Alice Student class.</p>
-</div>
-<div class="paragraph">
-<p>Step 2g. Alice student class contains payment class. The PayCommand execute method proceeds to call the method updatePayments, then calls updateStudent in model class to modify Alice Student class with the new updated payment.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Now, payment details have been updated and the tutor will be able to see a payment updated successfully message below the command text box and the list of payments as well as other details about Alice</p>
-</div>
-<div class="paragraph">
-<p>Step 4. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed in one of the rows.</p>
+<p>Step 7. The tutor may also choose to view the details from browser panel by clicking on Alice tab on the left. Payments will be displayed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -374,4 +379,4 @@ The maximum amount of payment that can be made each time is $10 000.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:26:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:12:20 UTC</div></div></div></body></html>
