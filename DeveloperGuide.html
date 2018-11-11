@@ -175,7 +175,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 This will generate all resources required by the application and tests.</p>
 </li>
 <li>
-<p>Open <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/storage/XmlAdaptedStudent.java"><code>XmlAdaptedStudent.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
+<p>Open <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/storage/XmlAdaptedStudent.java"><code>XmlAdaptedStudent.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -188,7 +188,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </li>
 <li>
-<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/seedu/address/commons/util/XmlUtilTest.java"><code>XmlUtilTest.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/tutorhelper/commons/util/XmlUtilTest.java"><code>XmlUtilTest.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/test/java/tutorhelper/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
 </li>
 </ol>
 </div>
@@ -198,7 +198,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<p>Run the <code>tutorhelper.MainApp</code> and try a few commands</p>
 </li>
 <li>
 <p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
@@ -341,7 +341,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -463,13 +463,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>StudentListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -498,7 +498,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -535,7 +535,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -580,7 +580,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</
 <div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -599,7 +599,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.address.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>tutorhelper.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -1460,7 +1460,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
 </li>
 <li>
-<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+<p><em>Unit tests</em> that test the individual components. These are in <code>tutorhelper.ui</code> package.</p>
 </li>
 </ol>
 </div>
@@ -1471,15 +1471,15 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <ol class="loweralpha" type="a">
 <li>
 <p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+e.g. <code>tutorhelper.commons.StringUtilTest</code></p>
 </li>
 <li>
 <p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+e.g. <code>tutorhelper.storage.StorageManagerTest</code></p>
 </li>
 <li>
 <p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
-e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+e.g. <code>tutorhelper.logic.LogicManagerTest</code></p>
 </li>
 </ol>
 </div>
@@ -1540,7 +1540,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2103-AY1819S1-W13-4/main/tree/master/src/main/java/tutorhelper/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -2386,4 +2386,4 @@ Expected: Invalid command format. marksyll command message usage is shown.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:32:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 18:00:28 UTC</div></div></div></body></html>
