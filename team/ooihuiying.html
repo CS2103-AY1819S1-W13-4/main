@@ -3,20 +3,33 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">TutorHelper</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Ooi Hui Ying - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-tutorhelper"><a class="link" href="#project-tutorhelper">PROJECT: TutorHelper</a></h2>
 <div class="sectionbody">
-<hr>
+<div class="paragraph">
+<p>This project portfolio consists of the contributions i have made to TutorHelper.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is a Java sample application intended for Tutors who would like to organise their students' information.</p>
+<p>TutorHelper is a desktop administration application intended for Tutors who would like to organise their students' information. TutorHelper uses CLI(command-line interface) as its main form of inputs: where tutors issues commands in the form of successive line of text. Having multiple students at once can be a hassle to deal with, especially with each student having his own curriculum, tuition timing, and payments. Our team of five decided to create TutorHelper by building upon the existing AddressBook Level 4 application. TutorHelper offers an easy way to keep track of the tutor schedule and keep tabs on the students, allowing him to efficiently plan ahead.</p>
+</div>
+<div class="paragraph">
+<p>Some of the new main features include :<br>
+Grouping<br>
+Payment<br>
+Earnings<br>
+Add/Edit/Delete/Mark Syllabus<br>
+Add/Delete/Copy Subject</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section lists the major and minor enhancements I have contributed to building TutorHelper, as well as miscellaneous contributions in other aspects of this project.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -56,7 +69,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Add Payment into TutorHelper (Pull request <a href="https://github.com">#12</a>)</p>
+<p>Add Payment into TutorHelper (Pull request <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/12">#12</a>)</p>
 </li>
 </ul>
 </div>
@@ -83,10 +96,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote additional tests for new features added to increase code coverage (Pull requests <a href="https://github.com">#138</a>)</p>
+<p>Wrote additional tests for new features added to increase code coverage (Pull requests <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/138">#138</a>)</p>
 </li>
 <li>
-<p>Did refactoring of addressbook to tutorHelper (Pull requests <a href="https://github.com">#143</a>)</p>
+<p>Did refactoring of addressbook to tutorHelper (Pull requests <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/143">#143</a>)</p>
 </li>
 </ul>
 </div>
@@ -279,203 +292,6 @@ Displays earnings made for January 2018.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add Student</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-MSS:
-  1. Tutor inputs to add a student and his/her details.
-  2. System adds student details into the database.
-  Use case ends.
-Extensions:
-  2a. Tutor did not key in all mandatory fields.
-    2a1. System displays error message informing tutor of invalid index.
-    2b1. Resume step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Edit Student</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-MSS:
-  1. Tutor inputs to edit a student's details.
-  2. System edits student details into the database.
-  Use case ends.
-Extensions:
-  2a. Index is out of bounds
-    2a1. System displays error message informing tutor of invalid index.
-    2b1. Resume step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Delete Student</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-MSS:
-  1. Tutor inputs student's index to delete.
-  2. System deletes student details from the database.
-  Use case ends.
-Extensions:
-  2a. Index is out of bounds
-   2a1. System displays error message informing tutor of invalid index.
-   2b1. Resume step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>List Students</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-MSS:
-  1. Tutor requests to list students.
-  2. System displays current list of students.
-  Use case ends.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Group Students</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Current list of students is not empty.
-MSS:
-  1. Tutor requests to group students by day or timing.
-  2. System filters the current list of students based on the timing entered.
-  3. System sorts the filtered list of students in order of timing.
-  4. System displays filtered and sorted list to Tutor.
-  Use case ends.
-Extensions:
-  2a. Input is invalid
-    2a1. System displays examples of valid input to Tutor.
-    Use case ends.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Record students' payments</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Current list of students is not empty.
-MSS:
-  1. Tutor request to add in payment for a student.
-  2. System searches for that student according to index entered.
-  3. System adds Payment amount, month and year to student's record.
-  4. System displays payment record in browser panel.
-  5. System displays successful recording of payment message under command box.
-  Use case ends.
-Extensions:
-  2a. Tutor does not enter all the required entries correctly
-    2a1. System displays error message
-    2a2. System gives tutor an example of a correct entry.
-    2a3. Repeat step 1
-  2b. Tutor does not enter a valid student index
-    2b1. System displays error message telling tutor that index is invalid
-    2b2. Repeat step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Edit students' payments</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Current list of students is not empty.
-Precondition: Payment for the month and year has been recorded for student before.
-MSS:
-  1. Tutor request to add in edited payment for a student.
-  2. System finds the existing payment entry with same month and year.
-  3. System adds new payment entry to existing entry.
-  4. System displays payment record in browser panel.
-  5. System displays successful editing of payment message under command box.
-  Use case ends.
-Extensions:
-  2a. Tutor does not enter all the required entries correctly
-    2a1. System displays error message
-    2a2. System gives tutor an example of a correct entry.
-    2a3. Repeat step 1
-  2b. Tutor does not enter a valid student index
-    2b1. System displays error message telling tutor that index is invalid
-    2b2. Repeat step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Display tutor&#8217;s earnings for that month and year</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Current list of students is not empty.
-MSS:
-  1. Tutor request for earnings for a specific month and year.
-  2. System searches for all the payment records made from all the students for that particular month and year.
-  3. System adds up all the payment.
-  4. System displays total earnings under the command box.
-  Use case end.
-Extensions:
-  2a. System does not find any payment recorded for that month and year.
-    2a1. System displays $0 as result.
-  2b. Tutor does not enter all the required entries correctly
-    2b1. System displays error message
-    2b2. System gives tutor an example of a correct entry.
-    2b3. Repeat step 1.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Edit students' syllabus for that subject</p>
-<div class="literalblock">
-<div class="content">
-<pre>System: TutorHelper
-Actor: Tutor
-Precondition: Tutor has an existing syllabus entry at the index.
-MSS:
-  1. Tutor request to edit syllabus for a specific student, subject and syllabus
-  2. System searches for the student and the respective subject and syllabus at specified index.
-  3. System edits the syllabus at the specified index with new syllabus
-  4. System displays edited syllabus list in browser panel
-  5. System displays successful editing of syllabus under command box.
-  Use case end.
- Extensions:
-  2a. System does not find any student entry at specified index.
-    2a1. System displays error message telling tutor that index is invalid
-    2a2. Repeat step 1.
-  2b. System does not find any subject entry at specified index.
-    2b1. System displays error message telling tutor that index is invalid
-    2b2. Repeat step 1.
-  2c. System does not find any syllabus entry at specified index.
-    2c1. System displays error message telling tutor that index is invalid.
-    2c2. Repeat step 1.
-  2d. System finds same syllabus entry already exists in subject.
-    2d1. System displays error message telling tutor that syllabus already exist.
-    2d2. Repeat step 1.</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
 <div class="sect2">
 <h3 id="record-payment-feature"><a class="link" href="#record-payment-feature">Record Payment Feature</a></h3>
 <div class="sect3">
@@ -614,4 +430,4 @@ Default value for earnings of an unrecorded month and year will be $0.
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:17:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:10:43 UTC</div></div></div></body></html>
