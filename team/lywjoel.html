@@ -63,6 +63,22 @@
 <div class="ulist">
 <ul>
 <li>
+<p>Refactoring:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>AddressBook to TutorHelper (Pull Request <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/215">#215</a>)</p>
+</li>
+<li>
+<p>Person to Student (Pull Request <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/222">#222</a>)</p>
+</li>
+<li>
+<p>Package Name (Pull Request <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/253">#253</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>Project Management:</p>
 <div class="ulist">
 <ul>
@@ -80,7 +96,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote additional tests for new features added to increase code coverage (Pull Requests <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/30">#30</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/132">#132</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/153">#153</a>)</p>
+<p>Wrote additional tests for new features added to increase code coverage (Pull Requests <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/30">#30</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/132">#132</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/153">#153</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/254">#254</a>)</p>
 </li>
 </ul>
 </div>
@@ -98,6 +114,9 @@
 <li>
 <p>Added section for adding and deleting subjects in the <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/87/commits/40e42156feecd1337b7daf60d2cd598e71f7660b">Developer Guide</a></p>
 </li>
+<li>
+<p>Re-ordered sections of User Guide for consistency (Pull Request <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/159/commits/85ef6a6cbc7b33f0bdc21542a98caaf1ab59b687">#159</a>)</p>
+</li>
 </ul>
 </div>
 </li>
@@ -109,7 +128,7 @@
 <p>Reviewed other PRs</p>
 </li>
 <li>
-<p>Fixed code style violations for team</p>
+<p>Fixed code style violations for team (Pull Requests <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/72">#72</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/87/commits/456aa20a08c5b5656e7d7de84345e3bce956d9a8">#87</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/96">#96</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/117">#117</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/123">#123</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/125">#125</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/127">#127</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/132">#132</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/139">#139</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/211">#211</a>, <a href="https://github.com/CS2103-AY1819S1-W13-4/main/pull/241">#241</a>)</p>
 </li>
 <li>
 <p>Reported bugs and gave suggestions to other teams in the class</p>
@@ -276,7 +295,7 @@ Deletes the first subject from the third student.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="add-delete-subject"><a class="link" href="#add-delete-subject">Add / Delete Subject</a></h3>
+<h3 id="add-delete-subject-feature"><a class="link" href="#add-delete-subject-feature">Add / Delete Subject Feature</a></h3>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
@@ -372,4 +391,242 @@ The TutorHelper has to have at least 1 student as a precondition for both <code>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 02:32:26 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As a busy tutor, I want to be able to manage my students' schedules individually, so that I can plan my time properly.</p>
+</li>
+<li>
+<p>As a tutor, I want to be able to find out where my students live and what time I should be there for tuition.</p>
+</li>
+<li>
+<p>As a tutor, I want to know my students' individual progress so that I know what topics I need to cover for the next tuition session.</p>
+</li>
+<li>
+<p>As a tutor, I want to keep track of my students' payments so that i know who to collect fees from.</p>
+</li>
+<li>
+<p>As a tutor, I want to keep track of my monthly earnings so that i can manage my financial accounts.</p>
+</li>
+<li>
+<p>As a tutor, I want to be able to edit teaching data such as editing my syllabus to keep up with changes in school&#8217;s curriculum or updating payments made by students.
+== Use Cases</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs to add a student and his/her details.
+  2. System adds student details into the database.
+  Use case ends.
+Extensions:
+  2a. Tutor did not key in all mandatory fields.
+    2a1. System displays error message informing tutor of invalid index.
+    2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs to edit a student's details.
+  2. System edits student details into the database.
+  Use case ends.
+Extensions:
+  2a. Index is out of bounds
+    2a1. System displays error message informing tutor of invalid index.
+    2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete Student</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor inputs student's index to delete.
+  2. System deletes student details from the database.
+  Use case ends.
+Extensions:
+  2a. Index is out of bounds
+   2a1. System displays error message informing tutor of invalid index.
+   2b1. Resume step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>List Students</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+MSS:
+  1. Tutor requests to list students.
+  2. System displays current list of students.
+  Use case ends.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Group Students</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Current list of students is not empty.
+MSS:
+  1. Tutor requests to group students by day or timing.
+  2. System filters the current list of students based on the timing entered.
+  3. System sorts the filtered list of students in order of timing.
+  4. System displays filtered and sorted list to Tutor.
+  Use case ends.
+Extensions:
+  2a. Input is invalid
+    2a1. System displays examples of valid input to Tutor.
+    Use case ends.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Record students' payments</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Current list of students is not empty.
+MSS:
+  1. Tutor request to add in payment for a student.
+  2. System searches for that student according to index entered.
+  3. System adds Payment amount, month and year to student's record.
+  4. System displays payment record in browser panel.
+  5. System displays successful recording of payment message under command box.
+  Use case ends.
+Extensions:
+  2a. Tutor does not enter all the required entries correctly
+    2a1. System displays error message
+    2a2. System gives tutor an example of a correct entry.
+    2a3. Repeat step 1
+  2b. Tutor does not enter a valid student index
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit students' payments</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Current list of students is not empty.
+Precondition: Payment for the month and year has been recorded for student before.
+MSS:
+  1. Tutor request to add in edited payment for a student.
+  2. System finds the existing payment entry with same month and year.
+  3. System adds new payment entry to existing entry.
+  4. System displays payment record in browser panel.
+  5. System displays successful editing of payment message under command box.
+  Use case ends.
+Extensions:
+  2a. Tutor does not enter all the required entries correctly
+    2a1. System displays error message
+    2a2. System gives tutor an example of a correct entry.
+    2a3. Repeat step 1
+  2b. Tutor does not enter a valid student index
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Display tutor&#8217;s earnings for that month and year</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Current list of students is not empty.
+MSS:
+  1. Tutor request for earnings for a specific month and year.
+  2. System searches for all the payment records made from all the students for that particular month and year.
+  3. System adds up all the payment.
+  4. System displays total earnings under the command box.
+  Use case end.
+Extensions:
+  2a. System does not find any payment recorded for that month and year.
+    2a1. System displays $0 as result.
+  2b. Tutor does not enter all the required entries correctly
+    2b1. System displays error message
+    2b2. System gives tutor an example of a correct entry.
+    2b3. Repeat step 1.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit students' syllabus for that subject</p>
+<div class="literalblock">
+<div class="content">
+<pre>System: TutorHelper
+Actor: Tutor
+Precondition: Tutor has an existing syllabus entry at the index.
+MSS:
+  1. Tutor request to edit syllabus for a specific student, subject and syllabus
+  2. System searches for the student and the respective subject and syllabus at specified index.
+  3. System edits the syllabus at the specified index with new syllabus
+  4. System displays edited syllabus list in browser panel
+  5. System displays successful editing of syllabus under command box.
+  Use case end.
+ Extensions:
+  2a. System does not find any student entry at specified index.
+    2a1. System displays error message telling tutor that index is invalid
+    2a2. Repeat step 1.
+  2b. System does not find any subject entry at specified index.
+    2b1. System displays error message telling tutor that index is invalid
+    2b2. Repeat step 1.
+  2c. System does not find any syllabus entry at specified index.
+    2c1. System displays error message telling tutor that index is invalid.
+    2c2. Repeat step 1.
+  2d. System finds same syllabus entry already exists in subject.
+    2d1. System displays error message telling tutor that syllabus already exist.
+    2d2. Repeat step 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>== Non Functional Requirements</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The system should respond in two seconds.</p>
+</li>
+<li>
+<p>The system should be understandable to a novice in working with computers.</p>
+</li>
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+</ol>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 03:59:44 UTC</div></div></div></body></html>

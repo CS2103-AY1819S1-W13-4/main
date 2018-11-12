@@ -9,33 +9,33 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a>
+<li><a href="#setting-up">1. Setting Up</a>
 <ul class="sectlevel2">
 <li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
+<li><a href="#setting-up-the-project">1.2. Setting Up the Project</a></li>
+<li><a href="#verifying-the-setup">1.3. Verifying the Setup</a></li>
+<li><a href="#configurations-to-apply-before-writing-code">1.4. Configurations to Apply before Writing Code</a></li>
 </ul>
 </li>
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Ui">2.2. UI Component</a></li>
+<li><a href="#Design-Logic">2.3. Logic Component</a></li>
+<li><a href="#Design-Model">2.4. Model Component</a></li>
+<li><a href="#Design-Storage">2.5. Storage Component</a></li>
+<li><a href="#Design-Commons">2.6. Common Classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#group-students-feature">3.1. Group Students feature</a></li>
-<li><a href="#students-payment-feature">3.2. Students payment feature</a></li>
-<li><a href="#students-edit-payment-feature">3.3. Students edit payment feature</a></li>
-<li><a href="#tutor-s-earnings-feature">3.4. Tutor&#8217;s Earnings feature</a></li>
-<li><a href="#copy-subject-feature">3.5. Copy Subject feature</a></li>
-<li><a href="#add-delete-subject">3.6. Add / Delete Subject</a></li>
-<li><a href="#edit-syllabus">3.7. Edit Syllabus</a></li>
+<li><a href="#group-students-feature">3.1. Group Students Feature</a></li>
+<li><a href="#record-payment-feature">3.2. Record Payment Feature</a></li>
+<li><a href="#edit-payment-record-feature">3.3. Edit Payment Record Feature</a></li>
+<li><a href="#display-earnings-feature">3.4. Display Earnings Feature</a></li>
+<li><a href="#copy-subject-feature">3.5. Copy Subject Feature</a></li>
+<li><a href="#add-delete-subject-feature">3.6. Add / Delete Subject Feature</a></li>
+<li><a href="#edit-syllabus-topic-feature">3.7. Edit Syllabus Topic Feature</a></li>
 <li><a href="#logging">3.8. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
@@ -53,7 +53,7 @@
 <li><a href="#Testing">5. Testing</a>
 <ul class="sectlevel2">
 <li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
+<li><a href="#types-of-tests">5.2. Types of Tests</a></li>
 <li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
@@ -75,26 +75,24 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
-<li><a href="#grouping">F.4. Grouping</a></li>
-<li><a href="#making-payment-for-a-student">F.5. Making Payment for a student</a></li>
-<li><a href="#editing-payment-for-a-student">F.6. Editing Payment for a student</a></li>
-<li><a href="#viewing-earnings-command">F.7. Viewing earnings command</a></li>
-<li><a href="#add-subject-command">F.8. Add subject command</a></li>
-<li><a href="#delete-subject-command">F.9. Delete subject command</a></li>
-<li><a href="#copy-subject-command">F.10. Copy subject command</a></li>
-<li><a href="#add-syllabus-command">F.11. Add syllabus command</a></li>
-<li><a href="#delete-syllabus-command">F.12. Delete syllabus command</a></li>
-<li><a href="#edit-syllabus-command">F.13. Edit syllabus command</a></li>
-<li><a href="#mark-command">F.14. Mark command</a></li>
+<li><a href="#grouping-students">F.2. Grouping Students</a></li>
+<li><a href="#recording-a-payment">F.3. Recording a Payment</a></li>
+<li><a href="#editing-payment-records">F.4. Editing Payment Records</a></li>
+<li><a href="#displaying-earnings">F.5. Displaying Earnings</a></li>
+<li><a href="#adding-a-subject">F.6. Adding a Subject</a></li>
+<li><a href="#deleting-a-subject">F.7. Deleting a Subject</a></li>
+<li><a href="#copying-a-subject">F.8. Copying a Subject</a></li>
+<li><a href="#adding-a-syllabus-topic">F.9. Adding a Syllabus Topic</a></li>
+<li><a href="#deleting-a-syllabus-topic">F.10. Deleting a Syllabus Topic</a></li>
+<li><a href="#editing-a-syllabus-topic">F.11. Editing a Syllabus Topic</a></li>
+<li><a href="#marking-a-syllabus-topic">F.12. Marking a Syllabus Topic</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting Up</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
@@ -136,7 +134,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></h3>
+<h3 id="setting-up-the-project"><a class="link" href="#setting-up-the-project">1.2. Setting Up the Project</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -194,7 +192,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the Setup</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -207,9 +205,9 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
+<h3 id="configurations-to-apply-before-writing-code"><a class="link" href="#configurations-to-apply-before-writing-code">1.4. Configurations to Apply before Writing Code</a></h3>
 <div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the Coding Style</a></h4>
 <div class="paragraph">
 <p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
 </div>
@@ -241,7 +239,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating Documentation to Match your Fork</a></h4>
 <div class="paragraph">
 <p>After forking the repo, the documentation will still refer to the <code>CS2103-AY1819S1-W13-4/main</code> repo.</p>
 </div>
@@ -296,19 +294,9 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting Started with Coding</a></h4>
 <div class="paragraph">
-<p>When you are ready to start coding,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
-</li>
-<li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Product Scope</em></a>.</p>
-</li>
-</ol>
+<p>When you are ready to start coding, get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -407,7 +395,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <div class="title">Figure 2. Class Diagram of the Logic Component</div>
 </div>
-<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
+<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven Nature of the Design</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the tutor issues the command <code>delete 1</code>.</p>
 </div>
@@ -455,7 +443,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
@@ -489,7 +477,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic Component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
@@ -527,7 +515,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
@@ -572,7 +560,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -597,7 +585,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common Classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>tutorhelper.commons</code> package.</p>
 </div>
@@ -611,7 +599,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>TutorHelper</
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="group-students-feature"><a class="link" href="#group-students-feature">3.1. Group Students feature</a></h3>
+<h3 id="group-students-feature"><a class="link" href="#group-students-feature">3.1. Group Students Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -703,7 +691,7 @@ Only 12-hr timings are valid.
 </div>
 </div>
 <div class="sect2">
-<h3 id="students-payment-feature"><a class="link" href="#students-payment-feature">3.2. Students payment feature</a></h3>
+<h3 id="record-payment-feature"><a class="link" href="#record-payment-feature">3.2. Record Payment Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current implementation</a></h4>
 <div class="paragraph">
@@ -782,7 +770,7 @@ The maximum amount of payment that can be made each time is $10 000.
 </div>
 </div>
 <div class="sect2">
-<h3 id="students-edit-payment-feature"><a class="link" href="#students-edit-payment-feature">3.3. Students edit payment feature</a></h3>
+<h3 id="edit-payment-record-feature"><a class="link" href="#edit-payment-record-feature">3.3. Edit Payment Record Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current implementation</a></h4>
 <div class="paragraph">
@@ -864,7 +852,7 @@ The maximum amount of payment that can be made each time is $10 000.
 </div>
 </div>
 <div class="sect2">
-<h3 id="tutor-s-earnings-feature"><a class="link" href="#tutor-s-earnings-feature">3.4. Tutor&#8217;s Earnings feature</a></h3>
+<h3 id="display-earnings-feature"><a class="link" href="#display-earnings-feature">3.4. Display Earnings Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current implementation</a></h4>
 <div class="paragraph">
@@ -922,7 +910,7 @@ Default value for earnings of an unrecorded month and year will be $0.
 </div>
 </div>
 <div class="sect2">
-<h3 id="copy-subject-feature"><a class="link" href="#copy-subject-feature">3.5. Copy Subject feature</a></h3>
+<h3 id="copy-subject-feature"><a class="link" href="#copy-subject-feature">3.5. Copy Subject Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -998,7 +986,7 @@ If the other student already has the same subject, append the content of the sub
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-delete-subject"><a class="link" href="#add-delete-subject">3.6. Add / Delete Subject</a></h3>
+<h3 id="add-delete-subject-feature"><a class="link" href="#add-delete-subject-feature">3.6. Add / Delete Subject Feature</a></h3>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.6.1. Implementation</a></h4>
 <div class="paragraph">
@@ -1094,7 +1082,7 @@ The TutorHelper has to have at least 1 student as a precondition for both <code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-syllabus"><a class="link" href="#edit-syllabus">3.7. Edit Syllabus</a></h3>
+<h3 id="edit-syllabus-topic-feature"><a class="link" href="#edit-syllabus-topic-feature">3.7. Edit Syllabus Topic Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1446,7 +1434,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of Tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1806,7 +1794,7 @@ Extensions:
       2c. System does not find any syllabus entry at specified index.
         2c1. System displays error message telling tutor that index is invalid.
         2c2. Repeat step 1.
-      2d. System find same syllabus entry already exists in subject.
+      2d. System finds same syllabus entry already exists in subject.
         2d1. System displays error message telling tutor that syllabus already exist.
         2d2. Repeat step 1.
 // end::usecases[]</pre>
@@ -1876,6 +1864,7 @@ Extensions:
 </td>
 <td class="content">
 These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+Commands existing in AddressBook Level 4 are omitted.
 </td>
 </tr>
 </table>
@@ -1916,53 +1905,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">F.2. Deleting a student</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a student while all students are listed</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list.</p>
-</li>
-<li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="grouping"><a class="link" href="#grouping">F.4. Grouping</a></h3>
+<h3 id="grouping-students"><a class="link" href="#grouping-students">F.2. Grouping Students</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1995,7 +1938,7 @@ Expected: Invalid command format. Group command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-payment-for-a-student"><a class="link" href="#making-payment-for-a-student">F.5. Making Payment for a student</a></h3>
+<h3 id="recording-a-payment"><a class="link" href="#recording-a-payment">F.3. Recording a Payment</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2041,7 +1984,7 @@ Expected: Invalid command format. Pay command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-payment-for-a-student"><a class="link" href="#editing-payment-for-a-student">F.6. Editing Payment for a student</a></h3>
+<h3 id="editing-payment-records"><a class="link" href="#editing-payment-records">F.4. Editing Payment Records</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2090,7 +2033,7 @@ Expected: Invalid command format. Pay command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-earnings-command"><a class="link" href="#viewing-earnings-command">F.7. Viewing earnings command</a></h3>
+<h3 id="displaying-earnings"><a class="link" href="#displaying-earnings">F.5. Displaying Earnings</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2123,7 +2066,7 @@ Expected: Invalid command format. Earnings command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-subject-command"><a class="link" href="#add-subject-command">F.8. Add subject command</a></h3>
+<h3 id="adding-a-subject"><a class="link" href="#adding-a-subject">F.6. Adding a Subject</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2156,7 +2099,7 @@ Expected: Invalid command format. addsub command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-subject-command"><a class="link" href="#delete-subject-command">F.9. Delete subject command</a></h3>
+<h3 id="deleting-a-subject"><a class="link" href="#deleting-a-subject">F.7. Deleting a Subject</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2164,7 +2107,7 @@ Expected: Invalid command format. addsub command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: Tutorhelper is not empty.</p>
+<p>Prerequisite: TutorHelper is not empty.</p>
 </li>
 <li>
 <p>Test case: 'deletesub 1 1'<br>
@@ -2189,7 +2132,7 @@ Expected: Invalid command format. deletesub command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="copy-subject-command"><a class="link" href="#copy-subject-command">F.10. Copy subject command</a></h3>
+<h3 id="copying-a-subject"><a class="link" href="#copying-a-subject">F.8. Copying a Subject</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2197,7 +2140,7 @@ Expected: Invalid command format. deletesub command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: Tutorhelper is not empty.</p>
+<p>Prerequisites: TutorHelper is not empty.</p>
 </li>
 <li>
 <p>Test case: 'copysub 1 1 2'<br>
@@ -2234,7 +2177,7 @@ Expected: Invalid command format. copysub command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-syllabus-command"><a class="link" href="#add-syllabus-command">F.11. Add syllabus command</a></h3>
+<h3 id="adding-a-syllabus-topic"><a class="link" href="#adding-a-syllabus-topic">F.9. Adding a Syllabus Topic</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2242,7 +2185,7 @@ Expected: Invalid command format. copysub command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: Tutorhelper must not be empty.</p>
+<p>Prerequisite: TutorHelper must not be empty.</p>
 </li>
 <li>
 <p>Test case: 'addsyll 1 1 sy/Integration'<br>
@@ -2271,7 +2214,7 @@ Expected: Invalid command format. addsyll command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-syllabus-command"><a class="link" href="#delete-syllabus-command">F.12. Delete syllabus command</a></h3>
+<h3 id="deleting-a-syllabus-topic"><a class="link" href="#deleting-a-syllabus-topic">F.10. Deleting a Syllabus Topic</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2279,7 +2222,7 @@ Expected: Invalid command format. addsyll command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: Tutorhelper must not be empty.</p>
+<p>Prerequisite: TutorHelper must not be empty.</p>
 </li>
 <li>
 <p>Test case: 'deletesyll 1 1 1'<br>
@@ -2308,7 +2251,7 @@ Expected: Invalid command format. deletesyll command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-syllabus-command"><a class="link" href="#edit-syllabus-command">F.13. Edit syllabus command</a></h3>
+<h3 id="editing-a-syllabus-topic"><a class="link" href="#editing-a-syllabus-topic">F.11. Editing a Syllabus Topic</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2316,7 +2259,7 @@ Expected: Invalid command format. deletesyll command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: Tutorhelper must not be empty.</p>
+<p>Prerequisite: TutorHelper must not be empty.</p>
 </li>
 <li>
 <p>Test case: 'editsyll 1 1 1 sy/Integration'<br>
@@ -2349,7 +2292,7 @@ Expected: Invalid command format. editsyll command message usage is shown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-command"><a class="link" href="#mark-command">F.14. Mark command</a></h3>
+<h3 id="marking-a-syllabus-topic"><a class="link" href="#marking-a-syllabus-topic">F.12. Marking a Syllabus Topic</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2357,7 +2300,7 @@ Expected: Invalid command format. editsyll command message usage is shown.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: Tutorhelper must not be empty.</p>
+<p>Prerequisite: TutorHelper must not be empty.</p>
 </li>
 <li>
 <p>Test case: 'mark 1 1 1'<br>
@@ -2386,4 +2329,4 @@ Expected: Invalid command format. marksyll command message usage is shown.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 02:32:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 03:59:44 UTC</div></div></div></body></html>
