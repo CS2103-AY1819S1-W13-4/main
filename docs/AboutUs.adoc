@@ -47,7 +47,6 @@ Responsibilities: Feature Development, Integration
 '''
 
 === Ooi Hui Ying
-image::ooihuiying.png[width="150", align="left"]
 {empty}http://github.com/ooihuiying[GitHub] | <<ooihuiying#, Portfolio>>
 
 Role: Developer +
